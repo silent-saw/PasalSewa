@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="1dp"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/category"
+            android:layout_height="100pt"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textSize="30px"
+            android:background="#2ca7d4"
+            android:layout_margin="1dp"
+            android:text="Category List"/>
+        <Button
+            android:id="@+id/items"
+            android:layout_width="0dp"
+            android:layout_height="100pt"
+            android:layout_weight="1"
+            android:textSize="30px"
+            android:background="#2ca7d4"
+            android:layout_margin="2dp"
+            android:text="Item List"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/customer"
+            android:layout_width="0dp"
+            android:layout_height="100pt"
+            android:layout_weight="1"
+            android:textSize="30px"
+            android:background="#2ca7d4"
+            android:layout_margin="1dp"
+            android:text="Customer List"/>
+        <Button
+            android:id="@+id/transaction"
+            android:layout_width="0dp"
+            android:layout_height="100pt"
+            android:layout_weight="1"
+            android:textSize="30px"
+            android:background="#2ca7d4"
+            android:layout_margin="2dp"
+            android:text="Tansactions"/>
+
+    </LinearLayout>
+
+</LinearLayout>
