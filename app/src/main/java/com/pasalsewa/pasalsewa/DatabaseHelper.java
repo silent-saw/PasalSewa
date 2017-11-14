@@ -125,7 +125,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         c.close();
         return list;
     }
+    public ArrayList<Customer> getCustomerList(){
+        ArrayList<Customer>list= new ArrayList<Customer>();
+        String getCustomerListSql="SELECT * FROM `Customer`";
+        Cursor c=getReadableDatabase().rawQuery(getCustomerListSql,null);
+        while(c.moveToNext()){
 
+            Customer customer=new Customer();
+            customer.customer_id=Integer.parseInt(c.getString(c.getColumnIndex("customer_id")));
+            customer.customer_no=Integer.parseInt(c.getString(c.getColumnIndex("customer_no")));
+            customer.customer_name=c.getString(c.getColumnIndex("customer_name"));
+            customer.customer_addr=c.getString(c.getColumnIndex("customer_addr"));
+            customer.customer_img= c.getBlob(c.getColumnIndex("customer_img"));
+            list.add(customer);
+        }
+        c.close();
+        return list;
+    }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
