@@ -9,13 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".HomePageActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".CategoriesActivity" />
+        <activity android:name=".TransactionActivity" />
+        <activity android:name=".ItemListActivity" />
+        <activity android:name=".CustomerInfoActivity" />
+        <activity android:name=".SortedItemListActivity" />
+        <activity android:name=".ItemDetailsActivity" />
+        <activity android:name=".CartActivity"></activity>
     </application>
 
 </manifest>
