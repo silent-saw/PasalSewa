@@ -65,7 +65,7 @@ public class HomePageActivity extends AppCompatActivity {
         customerInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomePageActivity.this,CustomerInfoActivity.class));
+                startActivity(new Intent(HomePageActivity.this,CustomerListActivity.class));
             }
         });
     }

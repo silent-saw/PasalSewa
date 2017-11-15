@@ -14,4 +14,10 @@
         <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-condensed</item>
     </style>
 
+    <style name="TextStyle">
+
+        <item name="android:fontFamily" tools:ignore="NewApi" >sans-serif-condensed</item>
+        <item name="android:textSize">40sp</item>
+    </style>
+
 </resources>
