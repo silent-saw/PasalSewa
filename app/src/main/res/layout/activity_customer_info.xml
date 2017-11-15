@@ -1,10 +1,391 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pasalsewa.pasalsewa.CustomerInfoActivity">
+    android:background="#fff"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-</android.support.constraint.ConstraintLayout>
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorBackground"
+        android:padding="5dp">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/person" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Sachin Maharjan"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/phone" />
+
+                <TextView
+                    style="@style/TextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="2dp"
+                    android:text="9851066458"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/location" />
+
+                <TextView
+                    style="@style/TextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="HariSidhdhi"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:background="#fff">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorBackground"
+                    android:gravity="center"
+                    android:text="Transaction History"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="2017/11/15   5:30 A.M"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="6"
+                            android:text="Transaction Amount"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="4"
+                            android:gravity="end"
+                            android:text="Rs. 1500"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="2017/11/15   5:30 A.M"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="6"
+                            android:text="Transaction Amount"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="4"
+                            android:gravity="end"
+                            android:text="Rs. 1500"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="2017/11/15   5:30 A.M"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="6"
+                            android:text="Transaction Amount"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="4"
+                            android:gravity="end"
+                            android:text="Rs. 1500"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="2017/11/15   5:30 A.M"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="6"
+                            android:text="Transaction Amount"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="4"
+                            android:gravity="end"
+                            android:text="Rs. 1500"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="2017/11/15   5:30 A.M"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="6"
+                            android:text="Transaction Amount"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="4"
+                            android:gravity="end"
+                            android:text="Rs. 1500"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorBackground"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <TextView
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:text="2017/11/15   5:30 A.M"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="6"
+                            android:text="Transaction Amount"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            style="@style/TextStyle"
+                            android:layout_width="0dp"
+                            android:layout_height="25dp"
+                            android:layout_weight="4"
+                            android:gravity="end"
+                            android:text="Rs. 1500"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:weightSum="10">
+
+            <TextView
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/colorBackground"
+                android:text="Amount Due ="
+                android:textSize="30sp" />
+
+            <TextView
+                style="@style/TextStyle"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/colorBackground"
+                android:gravity="center|end"
+                android:text="Rs. 1500"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
