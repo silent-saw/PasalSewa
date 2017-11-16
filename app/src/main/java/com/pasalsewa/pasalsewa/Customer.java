@@ -5,7 +5,8 @@ package com.pasalsewa.pasalsewa;
  */
 
 public class Customer {
-    int customer_id, customer_no;
+    int customer_id;
+    String customer_no;
     String customer_name, customer_addr;
     byte[] customer_img;
 }

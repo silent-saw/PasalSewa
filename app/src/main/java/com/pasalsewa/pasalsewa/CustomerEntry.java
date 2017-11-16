@@ -29,7 +29,7 @@ public class CustomerEntry extends AppCompatActivity {
             public void onClick(View view) {
                 String nameValue=name.getText().toString();
                 String addressValue=address.getText().toString();
-                int noValue=Integer.parseInt(no.getText().toString());
+                String noValue=no.getText().toString();
 
                 ContentValues contentValues=new ContentValues();
                 contentValues.put("customer_name",nameValue);
