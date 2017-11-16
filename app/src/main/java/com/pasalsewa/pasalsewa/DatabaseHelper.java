@@ -20,13 +20,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     static String name="pasalsewadb";
     static int version=1;
 
-    String createCategoryTableSql="CREATE TABLE `Category` (\n" +
+    String createCategoryTableSql="CREATE TABLE if not exists `Category` (\n" +
             "\t`cat_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`cat_name`\tTEXT NOT NULL,\n" +
             "\t`cat_img`\tBLOB\n" +
             ");";
 
-    String createItemTableSql="CREATE TABLE `Item` (\n" +
+    String createItemTableSql="CREATE TABLE if not exists `Item` (\n" +
             "\t`item_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`cat_id`\tINTEGER,\n" +
             "\t`item_name`\tTEXT NOT NULL,\n" +
@@ -36,14 +36,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\tFOREIGN KEY(`cat_id`) REFERENCES Category\n" +
             ");";
 
-    String createCustomerTableSql="CREATE TABLE `Customer` (\n" +
+    String createCustomerTableSql="CREATE TABLE if not exists `Customer` (\n" +
             "\t`customer_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`customer_name`\tTEXT NOT NULL,\n" +
             "\t`customer_no`\tINTEGER,\n" +
             "\t`customer_addr`\tTEXT,\n" +
             "\t`customer_img`\tBLOB\n" +
             ");";
-    String createBillTableSql="CREATE TABLE `Bill` (\n" +
+    String createBillTableSql="CREATE TABLE if not exists `Bill` (\n" +
             "\t`bill_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`customer_id`\tINTEGER,\n" +
             "\t`bill_amt`\tINTEGER NOT NULL,\n" +
@@ -53,7 +53,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\tFOREIGN KEY(`customer_id`) REFERENCES Customer\n" +
             ");";
 
-    String createBillParticularsTableSql="CREATE TABLE `BillParticulars` (\n" +
+    String createBillParticularsTableSql="CREATE TABLE if not exists `BillParticulars` (\n" +
             "\t`bp_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`bill_id`\tINTEGER,\n" +
             "\t`item_id`\tINTEGER NOT NULL,\n" +

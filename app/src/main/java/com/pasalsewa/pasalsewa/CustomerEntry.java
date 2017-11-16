@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CustomerEntry extends AppCompatActivity {
 
@@ -17,11 +18,11 @@ public class CustomerEntry extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_entry);
 
-        name.findViewById(R.id.customer_name);
-        address.findViewById(R.id.customer_addr);
-        no.findViewById(R.id.customer_no);
-        enter.findViewById(R.id.enter);
-        cancel.findViewById(R.id.cancel);
+        name= (EditText) findViewById(R.id.customer_name);
+        address= (EditText) findViewById(R.id.customer_addr);
+        no= (EditText) findViewById(R.id.customer_no);
+        enter= (Button) findViewById(R.id.enter);
+        cancel= (Button) findViewById(R.id.cancel);
 
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,11 +33,13 @@ public class CustomerEntry extends AppCompatActivity {
 
                 ContentValues contentValues=new ContentValues();
                 contentValues.put("customer_name",nameValue);
-                contentValues.put ("customer_address",addressValue);
+                contentValues.put ("customer_addr",addressValue);
                 contentValues.put("customer_no",noValue);
 
                 DatabaseHelper databaseHelper=new DatabaseHelper(CustomerEntry.this);
-                databaseHelper.insertCategory(contentValues);
+                databaseHelper.insertCustomer(contentValues);
+                Toast.makeText(CustomerEntry.this,"Customer inserted successfully",Toast.LENGTH_LONG).show();
+                finish();
 
             }
         });

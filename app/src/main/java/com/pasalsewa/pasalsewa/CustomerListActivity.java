@@ -7,9 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class CustomerListActivity extends AppCompatActivity {
+
+    DatabaseHelper databaseHelper;
 
 
     @Override
@@ -31,18 +34,21 @@ public class CustomerListActivity extends AppCompatActivity {
     }
 
 
-    TextView customer1,customer2,customer3,customer4,customer5,customer6,createNewCustomer;
+    TextView createNewCustomer;
+    ListView container;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_list);
-        customer1= (TextView) findViewById(R.id.customer1);
-        customer2= (TextView) findViewById(R.id.customer2);
-        customer3= (TextView) findViewById(R.id.customer3);
-        customer4= (TextView) findViewById(R.id.customer4);
-        customer5= (TextView) findViewById(R.id.customer5);
-        customer6= (TextView) findViewById(R.id.customer6);
+
+        databaseHelper=new DatabaseHelper(this);
+
+        container= (ListView) findViewById(R.id.container);
         createNewCustomer= (TextView) findViewById(R.id.createNewCustomer);
+
+        container.setAdapter(new CustomerListAdapter(CustomerListActivity.this,databaseHelper.getCustomerList()));
+
+        /*
 
         customer2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +56,22 @@ public class CustomerListActivity extends AppCompatActivity {
                 startActivity(new Intent(CustomerListActivity.this,CustomerInfoActivity.class));
             }
         });
+        */
+
+        createNewCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomerListActivity.this,CustomerEntry.class));
+            }
+        });
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        container.setAdapter(new CustomerListAdapter(CustomerListActivity.this,databaseHelper.getCustomerList()));
     }
 }

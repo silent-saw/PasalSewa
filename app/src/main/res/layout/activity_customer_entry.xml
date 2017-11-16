@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context="com.pasalsewa.pasalsewa.CustomerEntry">
     <LinearLayout
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:orientation="vertical"
-        android:background="#aaaaaa"
+        style="@style/TextStyle"
         tools:layout_editor_absoluteY="8dp"
         tools:layout_editor_absoluteX="8dp">
 
@@ -17,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer name"
-            android:textSize="20dp"
+            android:textSize="20sp"
+            style="@style/TextStyle"
             android:background="#5b4c4c"/>
         <EditText
             android:id="@+id/customer_name"
@@ -31,6 +33,7 @@
             android:layout_height="wrap_content"
             android:text="Address"
             android:textSize="20dp"
+            style="@style/TextStyle"
             android:background="#5b4c4c"/>
         <EditText
             android:id="@+id/customer_addr"
@@ -43,6 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Contact no."
             android:textSize="20dp"
+            style="@style/TextStyle"
             android:background="#5b4c4c"/>
         <EditText
             android:id="@+id/customer_no"
@@ -55,6 +59,7 @@
             android:id="@+id/enter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="Enter" />
         <Button
             android:id="@+id/cancel"
@@ -64,4 +69,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
