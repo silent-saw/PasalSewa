@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     String createCustomerTableSql="CREATE TABLE if not exists `Customer` (\n" +
             "\t`customer_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`customer_name`\tTEXT NOT NULL,\n" +
-            "\t`customer_no`\tINTEGER,\n" +
+            "\t`customer_no`\tTEXT,\n" +
             "\t`customer_addr`\tTEXT,\n" +
             "\t`customer_img`\tBLOB\n" +
             ");";
@@ -133,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             Customer customer=new Customer();
             customer.customer_id=Integer.parseInt(c.getString(c.getColumnIndex("customer_id")));
-            customer.customer_no=Integer.parseInt(c.getString(c.getColumnIndex("customer_no")));
+            customer.customer_no=c.getString(c.getColumnIndex("customer_no"));
             customer.customer_name=c.getString(c.getColumnIndex("customer_name"));
             customer.customer_addr=c.getString(c.getColumnIndex("customer_addr"));
             customer.customer_img= c.getBlob(c.getColumnIndex("customer_img"));
@@ -141,6 +141,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         c.close();
         return list;
+    }
+
+    public Customer getCustomerInfo(int id){
+        Customer customer=new Customer();
+        String sql="SELECT * FROM `Customer` WHERE customer_id="+id;
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            customer.customer_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("customer_id")));
+            customer.customer_name=cursor.getString(cursor.getColumnIndex("customer_name"));
+            customer.customer_addr=cursor.getString(cursor.getColumnIndex("customer_addr"));
+            customer.customer_no=cursor.getString(cursor.getColumnIndex("customer_no"));
+        }
+        cursor.close();
+        return customer;
+
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
