@@ -88,7 +88,7 @@ public class CategoriesActivity extends AppCompatActivity {
         addCategories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,SortedItemListActivity.class));
+                startActivity(new Intent(CategoriesActivity.this,AddCategory.class));
             }
         });
 

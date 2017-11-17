@@ -81,7 +81,7 @@ public class SortedItemListActivity extends AppCompatActivity {
         addItems.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SortedItemListActivity.this,ItemDetailsActivity.class));
+            startActivity(new Intent(SortedItemListActivity.this,AddItem.class));
             }
         });
     }
