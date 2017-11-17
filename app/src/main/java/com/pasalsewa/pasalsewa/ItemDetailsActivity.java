@@ -35,7 +35,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
-        addToCart= (TextView) findViewById(R.id.addToCart);
+        addToCart= (TextView) findViewById(R.id.addtocart);
         cancel = (TextView) findViewById(R.id.cancel);
 
         addToCart.setOnClickListener(new View.OnClickListener() {

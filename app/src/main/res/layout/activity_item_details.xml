@@ -1,121 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="15dp"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="#fff">
 
-    <LinearLayout
-        android:weightSum="10"
-        android:orientation="vertical"
+
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:id="@+id/image"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/fuugetsu"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#111"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_weight="2.5"
-            android:layout_marginBottom="20dp"
-            android:weightSum="10"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <TextView
-            android:layout_weight="6"
-            android:padding="10dp"
-            android:text="Price :-"
-            android:background="@color/colorBackground"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-         <EditText
-             android:textStyle="italic"
-             android:textAlignment="textEnd"
-             android:textSize="25sp"
-             android:text="15"
-             android:background="@color/colorBackground"
-             android:layout_weight="4"
-             android:layout_width="0dp"
-             android:layout_height="match_parent"
-             android:gravity="end" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_weight="2.5"
-            android:layout_marginBottom="40dp"
-            android:weightSum="10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Price"
+                android:gravity="left"
+                android:textStyle="bold"
+                android:textSize="15dp"/>
 
             <TextView
-                android:layout_weight="6"
-                android:padding="10dp"
-                android:text="Quantity to add to cart :-"
-                android:background="@color/colorBackground"
-                android:textSize="30sp"
+                android:id="@+id/priceset"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text=""
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="Quantity"
+                android:gravity="left"
                 android:textStyle="bold"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/textView3" />
+                android:textSize="15dp"
+                />
 
             <EditText
-                android:textStyle="italic"
-                android:textAlignment="textEnd"
-                android:textSize="25sp"
-                android:text="2"
-                android:background="@color/colorBackground"
-                android:layout_weight="4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                tools:ignore="RtlCompat" />
+
+                android:layout_width="100dp"
+                android:layout_height="30dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp">
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="enter ur id"
+                ></AutoCompleteTextView>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:text="New user"/>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginBottom="20dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/addtocart"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="addtoart"
+                android:layout_weight="1"/>
 
-            <TextView
-
-                android:paddingLeft="10dp"
-                android:background="@color/colorBackground"
-                android:text="ADD TO CART"
-                android:textSize="30sp"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/addToCart" />
-
-            <ImageView
-
-            android:background="@color/colorBackground"
-            android:src="@drawable/ic_add_shopping_cart_black_24dp"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            <Button
+                android:id="@+id/addtocredit"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="addtocredit"
+                android:layout_weight="1"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/cancel"
-                android:paddingLeft="10dp"
-                android:background="@color/colorBackground"
-                android:text="CANCEL"
-                android:textSize="30sp"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-            <ImageView
-
-                android:background="@color/colorBackground"
-                android:src="@drawable/ic_close_black_24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
     </LinearLayout>
-</ScrollView>
+
+
+
+
+
+</LinearLayout>
