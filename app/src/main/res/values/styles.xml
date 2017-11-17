@@ -16,8 +16,16 @@
 
     <style name="TextStyle">
 
-        <item name="android:fontFamily" tools:ignore="NewApi" >sans-serif-condensed</item>
+        <item name="android:fontFamily" tools:ignore="NewApi">sans-serif-condensed</item>
         <item name="android:textSize">40sp</item>
+    </style>
+    //FOR POP UP THEME TRANSLUCENT AND CLOSE ON TOUCH
+    //Called on android manifest page
+
+    <style name="AppTheme.popuptheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+
     </style>
 
 </resources>
