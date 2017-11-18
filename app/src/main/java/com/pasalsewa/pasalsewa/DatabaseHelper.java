@@ -65,6 +65,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     String createAddToCartTableSql="CREATE TABLE if not exists `AddToCart` (\n" +
             "\t`item_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`item_price`\tINTEGER,\n" +
+            "\t`item_name`\tTEXT,\n" +
+
             "\t`item_count`\tINTEGER NOT NULL,\n" +
             "\t`item_quantity`\tINTEGER NOT NULL,\n" +
             "\t`item_image`\tBLOB\n" +

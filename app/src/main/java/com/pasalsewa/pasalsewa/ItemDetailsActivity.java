@@ -57,6 +57,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         final TextView price = (TextView) findViewById(R.id.priceset);
          final EditText quantity = (EditText) findViewById(R.id.quantity);
         final ImageView imageView = (ImageView) findViewById(R.id.image);
+          final TextView itemname = (TextView) findViewById(R.id.itemname);
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +66,14 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 Toast.makeText(ItemDetailsActivity.this, "Added to Cart", Toast.LENGTH_SHORT).show();
                 String pricevalue = price.getText().toString();
                 String quantityvalue = quantity.getText().toString();
+                String itemnamevalue = itemname.getText().toString();
 
 
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("item_price",pricevalue);
                 contentValues.put("item_quantity",quantityvalue);
+                contentValues.put("item_name",itemnamevalue);
+
 
                 databaseHelper.insertToCart(contentValues);
 
