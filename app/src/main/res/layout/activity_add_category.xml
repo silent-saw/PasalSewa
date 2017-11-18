@@ -18,14 +18,15 @@
         <EditText
             android:id="@+id/cat_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:hint="Category Name" />
 
-        <ImageButton
-            android:id="@+id/camera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+        <ImageView
+            android:id="@+id/cat_img"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_camera_black_24dp"/>
 
         <ImageButton
             android:id="@+id/Gallery"
@@ -34,7 +35,7 @@
             android:src="@mipmap/ic_launcher" />
 
         <Button
-            android:id="@+id/Submit"
+            android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="submit" />

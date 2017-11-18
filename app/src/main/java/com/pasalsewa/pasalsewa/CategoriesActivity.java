@@ -8,11 +8,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 
 public class CategoriesActivity extends AppCompatActivity {
 
-    ImageView cat1,cat2,cat3,cat4,cat5,addCategories;
+    ImageView cat_img;
+    DatabaseHelper databaseHelper;
+    GridView gridView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -35,64 +38,27 @@ public class CategoriesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
-        cat1= (ImageView) findViewById(R.id.cat1);
-        cat2 = (ImageView) findViewById(R.id.cat2);
-        cat3 = (ImageView) findViewById(R.id.cat3);
-        cat4 = (ImageView) findViewById(R.id.cat4);
-        cat5 = (ImageView) findViewById(R.id.cat5);
-        addCategories = (ImageView) findViewById(R.id.addCategories);
+        cat_img = (ImageView) findViewById(R.id.cat_img);
+        gridView = (GridView) findViewById(R.id.gridview);
+        databaseHelper = new DatabaseHelper(this);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        cat_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,CartActivity.class));
-            }
-        });*/
-
-        cat1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,SortedItemListActivity.class));
+                Intent intent = new Intent(CategoriesActivity.this,AddCategory.class);
+                startActivity(intent);
             }
         });
-
-        cat2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,SortedItemListActivity.class));
-            }
-        });
-
-        cat3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,SortedItemListActivity.class));
-            }
-        });
-
-        cat4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,SortedItemListActivity.class));
-            }
-        });
-
-        cat5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,SortedItemListActivity.class));
-            }
-        });
-
-        addCategories.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(CategoriesActivity.this,AddCategory.class));
-            }
-        });
-
-
 
     }
+    public void refresh() {
+        gridView.setAdapter(new CategoryAdapter(this,databaseHelper.getCategoryList()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
+    }
+
 }
