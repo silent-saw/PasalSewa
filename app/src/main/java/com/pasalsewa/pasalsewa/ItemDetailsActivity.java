@@ -2,7 +2,6 @@ package com.pasalsewa.pasalsewa;
 
         import android.content.ContentValues;
         import android.content.Intent;
-        import android.database.Cursor;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
         import android.view.Menu;
@@ -15,8 +14,6 @@ package com.pasalsewa.pasalsewa;
         import android.widget.ImageView;
         import android.widget.TextView;
         import android.widget.Toast;
-
-        import java.util.ArrayList;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
@@ -96,6 +93,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        autoCompleteTextView.setAdapter(new AutocopletetextAdapter(this,databaseHelper.getUsernameList()));
+        autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,databaseHelper.getUsernameList()));
     }
 }
