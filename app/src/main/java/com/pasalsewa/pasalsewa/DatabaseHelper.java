@@ -159,6 +159,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<Item> getCategoryItem(int id){
+        ArrayList<Item> list=new ArrayList<Item>();
+        String getCategoryItemSql="SELECT * FROM `Item` WHERE cat_id="+id;
+        Cursor c=getReadableDatabase().rawQuery(getCategoryItemSql,null);
+        while (c.moveToNext()){
+            Item item=new Item();
+            item.item_id=Integer.parseInt(c.getString(c.getColumnIndex("item_id")));
+            item.cat_id=Integer.parseInt(c.getString(c.getColumnIndex("cat_id")));
+            item.item_qty=Integer.parseInt(c.getString(c.getColumnIndex("item_qty")));
+            item.item_price=Integer.parseInt(c.getString(c.getColumnIndex("item_price")));
+            item.item_name=c.getString(c.getColumnIndex("item_name"));
+            item.item_img= c.getBlob(c.getColumnIndex("item_img"));
+            list.add(item);
+        }
+        c.close();
+        return  list;
+
+    }
+
     public Customer getCustomerInfo(int id){
         Customer customer=new Customer();
         String sql="SELECT * FROM `Customer` WHERE customer_id="+id;
