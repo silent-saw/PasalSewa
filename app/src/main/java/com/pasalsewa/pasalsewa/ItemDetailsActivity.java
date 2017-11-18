@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,13 +31,14 @@ public class ItemDetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    TextView addToCart,cancel;
+    Button addToCart,cancel,checkout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
-        addToCart= (TextView) findViewById(R.id.addtocart);
-        cancel = (TextView) findViewById(R.id.cancel);
+        addToCart= (Button) findViewById(R.id.addtocart);
+        cancel = (Button) findViewById(R.id.cancel);
+        checkout = (Button) findViewById(R.id.addtocredit);
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,11 +48,20 @@ public class ItemDetailsActivity extends AppCompatActivity {
             }
         });
 
+
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ItemDetailsActivity.this,CategoriesActivity.class));
 
+            }
+        });
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent =new Intent(ItemDetailsActivity.this,CartActivity.class);
+
+                startActivity(intent);
             }
         });
     }
