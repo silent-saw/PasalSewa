@@ -1,17 +1,27 @@
 package com.pasalsewa.pasalsewa;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.content.ContentValues;
+        import android.content.Intent;
+        import android.database.Cursor;
+        import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.Menu;
+        import android.view.MenuInflater;
+        import android.view.MenuItem;
+        import android.view.View;
+        import android.widget.AutoCompleteTextView;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.ImageView;
+        import android.widget.TextView;
+        import android.widget.Toast;
+
+        import java.util.ArrayList;
 
 public class ItemDetailsActivity extends AppCompatActivity {
+
+    AutoCompleteTextView autoCompleteTextView;
+    DatabaseHelper databaseHelper;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,6 +41,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+
+
+
+
+
     Button addToCart,cancel,checkout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +55,28 @@ public class ItemDetailsActivity extends AppCompatActivity {
         addToCart= (Button) findViewById(R.id.addtocart);
         cancel = (Button) findViewById(R.id.cancel);
         checkout = (Button) findViewById(R.id.addtocredit);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
+        databaseHelper = new DatabaseHelper(this);
+        final TextView price = (TextView) findViewById(R.id.priceset);
+         final EditText quantity = (EditText) findViewById(R.id.quantity);
+        final ImageView imageView = (ImageView) findViewById(R.id.image);
 
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ItemDetailsActivity.this,CategoriesActivity.class));
                 Toast.makeText(ItemDetailsActivity.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                String pricevalue = price.getText().toString();
+                String quantityvalue = quantity.getText().toString();
+
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("item_price",pricevalue);
+                contentValues.put("item_quantity",quantityvalue);
+
+                databaseHelper.insertToCart(contentValues);
+
+
             }
         });
 
@@ -64,5 +96,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        autoCompleteTextView.setAdapter(new AutocopletetextAdapter(this,databaseHelper.getUsernameList()));
     }
 }
