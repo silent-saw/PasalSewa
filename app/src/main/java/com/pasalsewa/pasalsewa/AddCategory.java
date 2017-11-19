@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 
@@ -64,6 +65,11 @@ public class AddCategory extends AppCompatActivity {
                 contentValues.put("cat_name",addcategoryvalue);
                 contentValues.put("cat_img",getBlob(bitmap));
                 databaseHelper.insertCategory(contentValues);
+                Toast.makeText(AddCategory.this, "Category added to list sucessfully",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(AddCategory.this,CategoriesActivity.class);
+                startActivity(intent);
+
+
             }
         });
     }

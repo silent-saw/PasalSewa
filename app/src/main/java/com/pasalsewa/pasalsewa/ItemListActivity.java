@@ -52,7 +52,7 @@ public class ItemListActivity extends AppCompatActivity {
 
     }
     public void refresh() {
-        gridView.setAdapter(new CategoryAdapter(this,databaseHelper.getCategoryList()));
+        gridView.setAdapter(new ItemAdapter(this,databaseHelper.getItemList()));
     }
 
     @Override

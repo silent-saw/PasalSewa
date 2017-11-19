@@ -5,8 +5,8 @@ package com.pasalsewa.pasalsewa;
  */
 
 public class Item {
-    int item_id, item_qty, item_price,cat_id;
-    String item_name;
+    int  item_qty, item_price,cat_id;
+    String item_id, item_name;
     byte[] item_img;
 
 }
