@@ -43,7 +43,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,ItemListActivity.class).putExtra("item_id",category.cat_id));
+                context.startActivity(new Intent(context,ItemListActivity.class).putExtra("cat_id",category.cat_id));
             }
         });
         return view;
