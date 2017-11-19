@@ -1,15 +1,15 @@
 package com.pasalsewa.pasalsewa;
 
-import android.content.ClipData;
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+        import android.content.ClipData;
+        import android.content.ContentValues;
+        import android.content.Context;
+        import android.database.Cursor;
+        import android.database.sqlite.SQLiteDatabase;
+        import android.database.sqlite.SQLiteOpenHelper;
 
-import java.sql.Blob;
-import java.util.ArrayList;
-import java.util.Locale;
+        import java.sql.Blob;
+        import java.util.ArrayList;
+        import java.util.Locale;
 
 /**
  * Created by lazyboy on 11/10/17.
@@ -62,6 +62,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\tFOREIGN KEY(`bill_id`) REFERENCES Bill\n" +
             ");";
 
+    String createAddToCartTableSql="CREATE TABLE if not exists `AddToCart` (\n" +
+            "\t`item_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "\t`item_price`\tINTEGER,\n" +
+            "\t`item_name`\tTEXT,\n" +
+
+            "\t`item_count`\tINTEGER NOT NULL,\n" +
+            "\t`item_quantity`\tINTEGER NOT NULL,\n" +
+            "\t`item_image`\tBLOB\n" +
+
+            ");";
+
 
 
     public DatabaseHelper(Context context) {
@@ -71,6 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         getWritableDatabase().execSQL(createCustomerTableSql);
         getWritableDatabase().execSQL(createBillTableSql);
         getWritableDatabase().execSQL(createBillParticularsTableSql);
+        getWritableDatabase().execSQL(createAddToCartTableSql);
     }
 
     public void insertCategory(ContentValues cv){
@@ -89,6 +101,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     public void insertBillParticulars(ContentValues cv){
         getWritableDatabase().insert("BillParticulars","",cv);
+    }
+
+    public void insertToCart(ContentValues cv){
+        getWritableDatabase().insert("AddToCart","",cv);
     }
 
     public ArrayList<Category> getCategoryList(){
@@ -143,6 +159,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<Item> getCategoryItem(int id){
+        ArrayList<Item> list=new ArrayList<Item>();
+        String getCategoryItemSql="SELECT * FROM `Item` WHERE cat_id="+id;
+        Cursor c=getReadableDatabase().rawQuery(getCategoryItemSql,null);
+        while (c.moveToNext()){
+            Item item=new Item();
+            item.item_id=Integer.parseInt(c.getString(c.getColumnIndex("item_id")));
+            item.cat_id=Integer.parseInt(c.getString(c.getColumnIndex("cat_id")));
+            item.item_qty=Integer.parseInt(c.getString(c.getColumnIndex("item_qty")));
+            item.item_price=Integer.parseInt(c.getString(c.getColumnIndex("item_price")));
+            item.item_name=c.getString(c.getColumnIndex("item_name"));
+            item.item_img= c.getBlob(c.getColumnIndex("item_img"));
+            list.add(item);
+        }
+        c.close();
+        return  list;
+
+    }
+
     public Customer getCustomerInfo(int id){
         Customer customer=new Customer();
         String sql="SELECT * FROM `Customer` WHERE customer_id="+id;
@@ -157,6 +192,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return customer;
 
     }
+    public ArrayList<String> getUsernameList() {
+        String sql = "select * from Customer";
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+
+
+        ArrayList<String>list = new ArrayList<String>();
+        while (cursor.moveToNext()) {
+            list.add( cursor.getString(cursor.getColumnIndex("customer_name")));
+        }
+        cursor.close();
+        return list;
+    }
+
+
+
+
+
+
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 

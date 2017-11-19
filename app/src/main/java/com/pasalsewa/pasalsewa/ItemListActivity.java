@@ -6,8 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 public class ItemListActivity extends AppCompatActivity {
+    ImageView cat_img;
+    DatabaseHelper databaseHelper;
+    GridView gridView;
 
 
     @Override
@@ -31,5 +37,28 @@ public class ItemListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+
+        cat_img = (ImageView) findViewById(R.id.cat_img);
+        gridView = (GridView) findViewById(R.id.gridview);
+        databaseHelper = new DatabaseHelper(this);
+
+        cat_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ItemListActivity.this,AddItem.class);
+                startActivity(intent);
+            }
+        });
+
     }
+    public void refresh() {
+        gridView.setAdapter(new CategoryAdapter(this,databaseHelper.getCategoryList()));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refresh();
+    }
+
 }
