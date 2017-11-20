@@ -38,10 +38,9 @@ public class ItemListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
-        item_id=getIntent().getIntExtra("item_id",0);
-        databaseHelper=new DatabaseHelper(ItemListActivity.this);
         item_img = (ImageView) findViewById(R.id.item_img);
         gridView = (GridView) findViewById(R.id.gridview);
+        databaseHelper=new DatabaseHelper(this);
 
         item_img.setOnClickListener(new View.OnClickListener() {
             @Override

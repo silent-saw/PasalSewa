@@ -59,6 +59,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
         final ImageView imageView = (ImageView) findViewById(R.id.image);
           final TextView itemname = (TextView) findViewById(R.id.itemname);
 
+
+
+
+
         addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

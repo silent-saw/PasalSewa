@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class ItemAdapter extends ArrayAdapter<Item> {
     Context context;
-    int item_id;
+   // int item_id;
 
     public ItemAdapter(@NonNull Context context, ArrayList<Item> list){
         super(context, 0,list);
@@ -29,7 +29,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_layout, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_layout, null);//inflated into gridview from adapter
         TextView cat_name;
         ImageView cat_img;
         cat_name = (TextView) view.findViewById(R.id.cat_name);
