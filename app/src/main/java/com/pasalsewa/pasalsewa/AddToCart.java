@@ -6,7 +6,7 @@ package com.pasalsewa.pasalsewa;
 
 public class AddToCart {
 
-    int id;
+    int item_id;
     String item_name,item_price,item_quantity;
     byte[] item_img;
 }

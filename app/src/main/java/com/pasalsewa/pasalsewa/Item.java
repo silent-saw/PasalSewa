@@ -6,7 +6,7 @@ package com.pasalsewa.pasalsewa;
 
 public class Item {
     int item_id, item_qty, item_price,cat_id;
-    String item_name;
+    String  item_name;
     byte[] item_img;
 
 }
