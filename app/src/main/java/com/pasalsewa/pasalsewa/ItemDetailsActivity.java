@@ -100,9 +100,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+<<<<<<< HEAD
 
       autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,databaseHelper.getUsernameList()));
 
+=======
+>>>>>>> 8c97c181dfe52700943f683e76d2c0b04647fcc7
         autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this, databaseHelper.getUsernameList()));
     }
 }
