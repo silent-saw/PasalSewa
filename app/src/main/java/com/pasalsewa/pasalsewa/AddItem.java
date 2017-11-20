@@ -18,8 +18,8 @@ import java.io.ByteArrayOutputStream;
 
 public class AddItem extends AppCompatActivity {
     Button save;
-    EditText cat_name;
-    ImageView cat_img;
+    EditText item_name,category,item_price,item_qty;
+    ImageView item_img;
     DatabaseHelper databaseHelper;
 
     @Override
@@ -37,11 +37,14 @@ public class AddItem extends AppCompatActivity {
         //*.8 refers to 80 percent of the current height and with in integer
 
         getWindow().setLayout((int) (width * .8), (int) (height * .8));
-        cat_name= (EditText) findViewById(R.id.cat_name);
+        item_name= (EditText) findViewById(R.id.item_name);
+        item_price = (EditText) findViewById(R.id.item_price);
+        item_qty = (EditText) findViewById(R.id.item_qty);
+        category = (EditText) findViewById(R.id.category);
         save= (Button) findViewById(R.id.save);
         databaseHelper = new DatabaseHelper(this);
-        cat_img = (ImageView) findViewById(R.id.cat_img);
-        cat_img.setOnClickListener(new View.OnClickListener() {
+        item_img = (ImageView) findViewById(R.id.item_img);
+        item_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -51,12 +54,17 @@ public class AddItem extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String addcategoryvalue= cat_name.getText().toString();
+                String additemname= item_name.getText().toString();
+                int additemprice= Integer.parseInt(item_price.getText().toString());
+                int additemqty= Integer.parseInt(item_qty.getText().toString());
+
 
                 ContentValues contentValues = new ContentValues();
-                contentValues.put("cat_name",addcategoryvalue);
+                contentValues.put("item_name",additemname);
+                contentValues.put("item_price",additemprice);
+                contentValues.put("item_qty",additemqty);
                 contentValues.put("cat_img",getBlob(bitmap));
-                databaseHelper.insertCategory(contentValues);
+                databaseHelper.insertItem(contentValues);
                 Toast.makeText(AddItem.this, "Category added to list sucessfully",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(AddItem.this,ItemListActivity.class);
                 startActivity(intent);
@@ -73,7 +81,7 @@ public class AddItem extends AppCompatActivity {
         {
 
             bitmap = (Bitmap) data.getExtras().get("data");
-            cat_img.setImageBitmap(bitmap);
+            item_img.setImageBitmap(bitmap);
 
         }
     }

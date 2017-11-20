@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 public class ItemAdapter extends ArrayAdapter<Item> {
     Context context;
+    int item_id;
 
     public ItemAdapter(@NonNull Context context, ArrayList<Item> list){
         super(context, 0,list);
@@ -33,9 +34,11 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         ImageView cat_img;
         cat_name = (TextView) view.findViewById(R.id.cat_name);
         cat_img = (ImageView) view.findViewById(R.id.cat_img);
+
         final Item item= getItem(position);
         cat_name.setText(item.item_name);
-        cat_img.setImageBitmap(AddCategory.getBitmap(item.item_img));
+        cat_img.setImageBitmap(AddItem.getBitmap(item.item_img));
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
