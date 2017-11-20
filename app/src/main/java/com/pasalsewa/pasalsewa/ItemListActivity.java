@@ -14,7 +14,7 @@ public class ItemListActivity extends AppCompatActivity {
     ImageView item_img;
     DatabaseHelper databaseHelper;
     GridView gridView;
-    int item_id;
+    int id;
 
 
     @Override
@@ -40,7 +40,8 @@ public class ItemListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item_list);
         item_img = (ImageView) findViewById(R.id.item_img);
         gridView = (GridView) findViewById(R.id.gridview);
-        databaseHelper=new DatabaseHelper(this);
+        id=getIntent().getIntExtra("cat_id",0);
+        databaseHelper=new DatabaseHelper(ItemListActivity.this);
 
         item_img.setOnClickListener(new View.OnClickListener() {
             @Override

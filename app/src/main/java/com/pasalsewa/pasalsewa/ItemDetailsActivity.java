@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ItemDetailsActivity extends AppCompatActivity {
+    int id;
 
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
@@ -53,6 +54,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
         final EditText quantity = (EditText) findViewById(R.id.quantity);
         final ImageView imageView = (ImageView) findViewById(R.id.image);
         final TextView itemname = (TextView) findViewById(R.id.itemname);
+        id=getIntent().getIntExtra("item_id",0);
+        databaseHelper=new DatabaseHelper(ItemDetailsActivity.this);
+
 
 
 
@@ -96,10 +100,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-<<<<<<< HEAD
+
       autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,databaseHelper.getUsernameList()));
-=======
+
         autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this, databaseHelper.getUsernameList()));
->>>>>>> 083074251f244d923e9cacb6da1113f71b78ec5e
     }
 }
