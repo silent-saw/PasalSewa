@@ -2,6 +2,7 @@ package com.pasalsewa.pasalsewa;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 public class ItemDetailsActivity extends AppCompatActivity {
     int id;
+    TextView itemname,price;
+    ImageView image;
 
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
@@ -53,10 +56,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
         final TextView price = (TextView) findViewById(R.id.priceset);
         final EditText quantity = (EditText) findViewById(R.id.quantity);
         final ImageView imageView = (ImageView) findViewById(R.id.image);
-        final TextView itemname = (TextView) findViewById(R.id.itemname);
+        itemname = (TextView) findViewById(R.id.itemname);
         id=getIntent().getIntExtra("item_id",0);
         databaseHelper=new DatabaseHelper(ItemDetailsActivity.this);
-
 
 
 
@@ -100,12 +102,23 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-<<<<<<< HEAD
+
 
       autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,databaseHelper.getUsernameList()));
 
-=======
->>>>>>> 8c97c181dfe52700943f683e76d2c0b04647fcc7
+
         autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this, databaseHelper.getUsernameList()));
+    }
+    public void displaydata(){
+
+        Item item= databaseHelper.getCategoryItem(id);
+        itemname.setText(item.item_name);
+        price.setText(item.item_price);
+        ImageView image = (ImageView) findViewById(R.id.image);
+        image.setImageBitmap(ItemDetailsActivity.getBitmap(item.item_img));
+
+    }
+
+    private static Bitmap getBitmap(byte[] item_img) {
     }
 }
