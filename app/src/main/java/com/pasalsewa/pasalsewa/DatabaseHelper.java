@@ -1,6 +1,5 @@
 package com.pasalsewa.pasalsewa;
 
-<<<<<<< HEAD
         import android.content.ContentValues;
         import android.content.Context;
         import android.database.Cursor;
@@ -8,7 +7,6 @@ package com.pasalsewa.pasalsewa;
         import android.database.sqlite.SQLiteOpenHelper;
 
         import java.util.ArrayList;
-=======
 import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Context;
@@ -19,7 +17,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Locale;
->>>>>>> 8930e14f6c1124a1a88b2f2c0de26e5dcd301ea5
 
 /**
  * Created by lazyboy on 11/10/17.
