@@ -11,9 +11,10 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ItemListActivity extends AppCompatActivity {
-    ImageView cat_img;
+    ImageView item_img;
     DatabaseHelper databaseHelper;
     GridView gridView;
+    int item_id;
 
 
     @Override
@@ -29,6 +30,7 @@ public class ItemListActivity extends AppCompatActivity {
         if (id==R.id.action_cart){
             startActivity(new Intent(ItemListActivity.this,CartActivity.class));
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -37,12 +39,11 @@ public class ItemListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
-
-        cat_img = (ImageView) findViewById(R.id.cat_img);
+        item_img = (ImageView) findViewById(R.id.item_img);
         gridView = (GridView) findViewById(R.id.gridview);
-        databaseHelper = new DatabaseHelper(this);
+        databaseHelper=new DatabaseHelper(this);
 
-        cat_img.setOnClickListener(new View.OnClickListener() {
+        item_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ItemListActivity.this,AddItem.class);
@@ -55,7 +56,8 @@ public class ItemListActivity extends AppCompatActivity {
 
     }
     public void refresh() {
-        gridView.setAdapter(new CategoryAdapter(this,databaseHelper.getCategoryList()));
+
+        gridView.setAdapter(new ItemAdapter(this,databaseHelper.getItemList()));
     }
 
 

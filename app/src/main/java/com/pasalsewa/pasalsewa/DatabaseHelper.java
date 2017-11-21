@@ -207,12 +207,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
-
-
-
-
-
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
