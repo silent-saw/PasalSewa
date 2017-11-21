@@ -234,9 +234,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while(cursor.moveToNext()){
             item.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
             item.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
-            item.item_price=Integer.parseInt(cursor.getString(Integer.parseInt("item_price")));
+            item.item_price=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_price")));
             item.item_img= cursor.getBlob(cursor.getColumnIndex("item_img"));
-            item.item_qty =Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_quantity")));
+            item.item_qty =Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_qty")));
         }
         cursor.close();
         return item;

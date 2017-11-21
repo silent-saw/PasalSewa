@@ -64,6 +64,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
              itemname = (TextView) findViewById(R.id.itemname);
 
             item_id =getIntent().getIntExtra("item_id",0);
+            FillItemDetail(item_id);
 
 
             addToCart.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +73,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
                     Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
-                    FillItemDetail();
+
                     int pricevalue = Integer.parseInt(price.getText().toString());
                     int quantityvalue = Integer.parseInt(quantity.getText().toString());
                     String itemnamevalue = itemname.getText().toString();
@@ -130,9 +131,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         }
 
-        public void FillItemDetail(){
+        public void FillItemDetail(int item_id){
             Item item = databaseHelper.getIteminfo(item_id);
-            price.setText(item.item_price);
+            price.setText(item.item_price+"");
             itemname.setText(item.item_name);
             image.setImageBitmap(AddItem.getBitmap(item.item_img));
 
