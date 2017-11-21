@@ -67,11 +67,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     String createAddToCartTableSql = "CREATE TABLE if not exists `AddToCart` (\n" +
 
-            "\t`item_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "\t`item_id`\tINTEGER,\n" +
             "\t`item_price`\tINTEGER,\n" +
             "\t`item_name`\tTEXT,\n" +
 
-            "\t`item_count`\tINTEGER NOT NULL,\n" +
+            "\t`cart_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`item_quantity`\tINTEGER NOT NULL,\n" +
             "\t`item_image`\tBLOB\n" +
 
@@ -227,7 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public Item getIteminfo(String item_id){
+    public Item getIteminfo(int item_id){
         Item item=new Item();
         String sql="SELECT * FROM `Item` WHERE item_id="+item_id;
         Cursor cursor=getReadableDatabase().rawQuery(sql,null);

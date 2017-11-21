@@ -21,7 +21,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
-    String item_id;
+    int item_id;
     TextView price,itemname;
     ImageView image;
     EditText quantity;
@@ -59,7 +59,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
               image = (ImageView) findViewById(R.id.image);
              itemname = (TextView) findViewById(R.id.itemname);
 
-            item_id =getIntent().getStringExtra(item_id);
+            item_id =getIntent().getIntExtra("item_id",0);
 
 
             addToCart.setOnClickListener(new View.OnClickListener() {
