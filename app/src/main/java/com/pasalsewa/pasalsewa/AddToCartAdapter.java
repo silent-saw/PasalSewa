@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
     Context context;
 
-    public AddToCartAdapter(@NonNull Context context, int resource, ArrayList<AddToCart> list) {
+    public AddToCartAdapter(@NonNull Context context, ArrayList<AddToCart> list) {
         super(context, 0, list);
         this.context = context;
     }
@@ -26,7 +26,7 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.cart_layout,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.cart_layout, null);
 
         TextView item_id_cart, item_name_cart, item_price_cart, item_quantity_cart;
         item_id_cart = view.findViewById(R.id.item_id_cart);

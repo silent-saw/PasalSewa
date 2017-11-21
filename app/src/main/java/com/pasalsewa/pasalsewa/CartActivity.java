@@ -11,6 +11,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class CartActivity extends AppCompatActivity {
     Button buy, cancel;
     EditText paid;
     TextView total, credit;
+    ListView ListView;
 
 
     @Override
@@ -30,15 +32,17 @@ public class CartActivity extends AppCompatActivity {
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
         databaseHelper = new DatabaseHelper(this);
         buy = (Button) findViewById(R.id.buy);
-        cancel = (Button) findViewById(R.id.cancel);
+        cancel = (Button) findViewById(R.id.cancel);a
         paid = (EditText) findViewById(R.id.paid);
         total = (TextView) findViewById(R.id.total);
         credit = (TextView) findViewById(R.id.credit);
+        ListView = (android.widget.ListView) findViewById(R.id.display_add_to_cart);
         total.setText("Set Total Val");
+
 
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {    
+            public void onClick(View view) {
                 startActivity(new Intent(CartActivity.this, HomePageActivity.class));
                 Toast.makeText(CartActivity.this, "Transaction Completed", Toast.LENGTH_SHORT).show();
             }
@@ -66,5 +70,9 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    protected void onResume() {
+        ListView.setAdapter(new AddToCartAdapter(this, databaseHelper.getCartList()));
+        super.onResume();
+    }
 }
