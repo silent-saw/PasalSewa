@@ -193,6 +193,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return customer;
 
     }
+
+    public Item getIteminfo(String item_id){
+        Item item=new Item();
+        String sql="SELECT * FROM `Item` WHERE item_id="+item_id;
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            item.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
+            item.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
+            item.item_price=Integer.parseInt(cursor.getString(Integer.parseInt("item_price")));
+            item.item_img= cursor.getBlob(cursor.getColumnIndex("item_img"));
+        }
+        cursor.close();
+        return item;
+
+    }
     public ArrayList<String> getUsernameList() {
         String sql = "select * from Customer";
 
@@ -216,4 +231,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+
+
+
 }

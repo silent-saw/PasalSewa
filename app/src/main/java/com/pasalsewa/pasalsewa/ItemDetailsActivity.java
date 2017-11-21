@@ -21,6 +21,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
+    String item_id;
+    TextView price,itemname;
+    ImageView image;
+    EditText quantity;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -50,10 +54,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
             checkout = (Button) findViewById(R.id.addtocredit);
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
             databaseHelper = new DatabaseHelper(this);
-            final TextView price = (TextView) findViewById(R.id.priceset);
-            final EditText quantity = (EditText) findViewById(R.id.quantity);
-            final ImageView imageView = (ImageView) findViewById(R.id.image);
-            final TextView itemname = (TextView) findViewById(R.id.itemname);
+             price = (TextView) findViewById(R.id.priceset);
+             quantity = (EditText) findViewById(R.id.quantity);
+              image = (ImageView) findViewById(R.id.image);
+             itemname = (TextView) findViewById(R.id.itemname);
+
+            item_id =getIntent().getStringExtra(item_id);
 
 
             addToCart.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +101,25 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 }
             });
 
+
+
             autoCompleteTextView.setAdapter(new AutoCompleteAdapter(ItemDetailsActivity.this, databaseHelper.getUsernameList()));
 
 
 
         }
+
+        public void FillItemDetail(){
+            Item item = databaseHelper.getIteminfo(item_id);
+            price.setText(item.item_price);
+            itemname.setText(item.item_name);
+            image.setImageBitmap(AddItem.getBitmap(item.item_img));
+
+
+
+
+        }
+
 
 
 }
