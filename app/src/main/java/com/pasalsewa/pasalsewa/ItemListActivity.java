@@ -50,10 +50,14 @@ public class ItemListActivity extends AppCompatActivity {
             }
         });
 
+
+
+
     }
     public void refresh() {
         gridView.setAdapter(new CategoryAdapter(this,databaseHelper.getCategoryList()));
     }
+
 
     @Override
     protected void onResume() {

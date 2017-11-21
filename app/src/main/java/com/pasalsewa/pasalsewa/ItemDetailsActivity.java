@@ -15,6 +15,8 @@ package com.pasalsewa.pasalsewa;
         import android.widget.TextView;
         import android.widget.Toast;
 
+        import java.util.ArrayList;
+
 public class ItemDetailsActivity extends AppCompatActivity {
 
     AutoCompleteTextView autoCompleteTextView;
@@ -37,12 +39,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
-
-
-
 
     Button addToCart,cancel,checkout;
     @Override
@@ -98,5 +94,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
             }
         });
         autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,databaseHelper.getUsernameList()));
+
+
     }
+
 }

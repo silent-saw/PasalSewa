@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\tFOREIGN KEY(`bill_id`) REFERENCES Bill\n" +
             ");";
 
-    String createAddToCartTableSql="CREATE TABLE if not exists `AddToCart` (\n" +
+    String createAddToCartTableSql="CREATE TABLE if not exists `Cart` (\n" +
             "\t`item_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`item_price`\tINTEGER,\n" +
             "\t`item_name`\tTEXT,\n" +
@@ -99,13 +99,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void insertBill(ContentValues cv){
         getWritableDatabase().insert("Bill","",cv);
     }
-    public void insertBillParticulars(ContentValues cv){
-        getWritableDatabase().insert("BillParticulars","",cv);
+    public void insertBillParticulars(ContentValues cv){getWritableDatabase().insert("BillParticulars","",cv);}
+    public void insertToCart(ContentValues cv){
+        getWritableDatabase().insert("Cart","",cv);
     }
 
-    public void insertToCart(ContentValues cv){
-        getWritableDatabase().insert("AddToCart","",cv);
-    }
+
+
+
 
     public ArrayList<Category> getCategoryList(){
         ArrayList<Category>list= new ArrayList<Category>();
