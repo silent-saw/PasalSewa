@@ -2,6 +2,7 @@ package com.pasalsewa.pasalsewa;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import android.os.Bundle;
@@ -71,7 +72,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
                     Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
-                    FillItemDetail();
+                   // FillItemDetail();
                     int pricevalue = Integer.parseInt(price.getText().toString());
                     int quantityvalue = Integer.parseInt(quantity.getText().toString());
                     String itemnamevalue = itemname.getText().toString();
@@ -80,13 +81,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_price", pricevalue);
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
-                    contentValues.put("item_id",item_id);
                     contentValues.put("item_img",getBlob(bitmap));
                     databaseHelper.insertToCart(contentValues);
+                    displaydata();
 
                     image.setOnClickListener(new View.OnClickListener() {
-
-
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -107,8 +106,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(ItemDetailsActivity.this, CartActivity.class);
-
-
                     startActivity(intent);
                 }
             });
@@ -121,13 +118,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         }
 
-        public void FillItemDetail(){
+        /*public void FillItemDetail(){
             Item item = databaseHelper.getIteminfo(item_id);
             price.setText(item.item_price);
             itemname.setText(item.item_name);
             image.setImageBitmap(AddItem.getBitmap(item.item_img));
-                startActivity(intent);
-            }
+               startActivity(intent);
+            }*/
         });
 
 
@@ -138,7 +135,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
     public void displaydata(){
 
-        Item item= databaseHelper.getCategoryItem(id);
+        Item item= databaseHelper.getIteminfo(item_id);
         itemname.setText(item.item_name);
         price.setText(item.item_price);
         ImageView image = (ImageView) findViewById(R.id.image);
@@ -146,12 +143,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     }
 
-    private static Bitmap getBitmap(byte[] item_img) {
-    }
-
-
-
-        }
     Bitmap bitmap;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
