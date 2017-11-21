@@ -257,6 +257,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<AddToCart> getCartItems(){
+        String sql="SELECT * FROM  `AddToCart`";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        ArrayList<AddToCart> list=new ArrayList<AddToCart>();
+        while (cursor.moveToNext()){
+            AddToCart addToCart=new AddToCart();
+            addToCart.cart_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("cart_id")));
+            addToCart.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
+            addToCart.item_price=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_price")));
+            addToCart.item_quantity=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_quantity")));
+            addToCart.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
+            list.add(addToCart);
+        }
+        cursor.close();
+        return list;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 

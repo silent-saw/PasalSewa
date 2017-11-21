@@ -71,17 +71,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
             addToCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
-                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
-
                     int pricevalue = Integer.parseInt(price.getText().toString());
                     int quantityvalue = Integer.parseInt(quantity.getText().toString());
-
                     String itemnamevalue = itemname.getText().toString();
-
-
-
-
 
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("item_price", pricevalue);
@@ -89,13 +81,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_name", itemnamevalue);
                     contentValues.put("item_id",item_id);
 
-
-
-
-
-
                     databaseHelper.insertToCart(contentValues);
 
+                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
+                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
                 }
             });
