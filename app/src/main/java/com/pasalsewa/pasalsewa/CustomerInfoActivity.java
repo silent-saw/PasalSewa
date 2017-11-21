@@ -27,6 +27,5 @@ public class CustomerInfoActivity extends AppCompatActivity {
         name.setText(customer.customer_name);
         no.setText(customer.customer_no+"");
         address.setText(customer.customer_addr);
-        int b=Valid.checkNumber(4);
     }
 }
