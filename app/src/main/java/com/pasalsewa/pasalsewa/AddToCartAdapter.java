@@ -18,7 +18,11 @@ import java.util.ArrayList;
 public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
     Context context;
 
+
     public AddToCartAdapter(@NonNull Context context, ArrayList<AddToCart> list) {
+
+
+
         super(context, 0, list);
         this.context = context;
     }
@@ -35,11 +39,11 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
         item_quantity_cart = view.findViewById(R.id.item_qty_cart);
 
 
-        AddToCart addToCart = getItem(position);
-        item_id_cart.setText(addToCart.item_id);
-        item_name_cart.setText(addToCart.item_name);
-        item_price_cart.setText(addToCart.item_price);
-        item_quantity_cart.setText(addToCart.item_quantity);
+        AddToCart addToAddToCart = getItem(position);
+        item_id_cart.setText(addToAddToCart.item_id);
+        item_name_cart.setText(addToAddToCart.item_name);
+        item_price_cart.setText(addToAddToCart.item_price);
+        item_quantity_cart.setText(addToAddToCart.item_quantity);
         return view;
 
 

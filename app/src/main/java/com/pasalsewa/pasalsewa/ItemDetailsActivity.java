@@ -15,10 +15,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+        import java.util.ArrayList;
+
 public class ItemDetailsActivity extends AppCompatActivity {
 
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
+    String item_id;
+    TextView price,itemname;
+    ImageView image;
+    EditText quantity;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -34,68 +40,86 @@ public class ItemDetailsActivity extends AppCompatActivity {
             startActivity(new Intent(ItemDetailsActivity.this, CartActivity.class));
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
-    Button addToCart, cancel, checkout;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_details);
-        addToCart = (Button) findViewById(R.id.addtocart);
-        cancel = (Button) findViewById(R.id.cancel);
-        checkout = (Button) findViewById(R.id.addtocredit);
-        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
-        databaseHelper = new DatabaseHelper(this);
-        final TextView price = (TextView) findViewById(R.id.priceset);
-        final EditText quantity = (EditText) findViewById(R.id.quantity);
-        final ImageView imageView = (ImageView) findViewById(R.id.image);
-        final TextView itemname = (TextView) findViewById(R.id.itemname);
+        Button addToCart, cancel, checkout;
 
 
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_item_details);
+            addToCart = (Button) findViewById(R.id.addtocart);
+            cancel = (Button) findViewById(R.id.cancel);
+            checkout = (Button) findViewById(R.id.addtocredit);
+            autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
+            databaseHelper = new DatabaseHelper(this);
+             price = (TextView) findViewById(R.id.priceset);
+             quantity = (EditText) findViewById(R.id.quantity);
+              image = (ImageView) findViewById(R.id.image);
+             itemname = (TextView) findViewById(R.id.itemname);
+
+            item_id =getIntent().getStringExtra(item_id);
+
+
+            addToCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
+                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
+                    String pricevalue = price.getText().toString();
+                    String quantityvalue = quantity.getText().toString();
+                    String itemnamevalue = itemname.getText().toString();
+
+
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("item_price", pricevalue);
+                    contentValues.put("item_quantity", quantityvalue);
+                    contentValues.put("item_name", itemnamevalue);
+
+
+                    databaseHelper.insertToCart(contentValues);
+
+
+                }
+            });
+
+
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
+
+                }
+            });
+            checkout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(ItemDetailsActivity.this, CartActivity.class);
+
+                    startActivity(intent);
+                }
+            });
 
 
 
-        addToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
-                Toast.makeText(ItemDetailsActivity.this, "Added to Cart", Toast.LENGTH_SHORT).show();
-                String pricevalue = price.getText().toString();
-                String quantityvalue = quantity.getText().toString();
-                String itemnamevalue = itemname.getText().toString();
+            autoCompleteTextView.setAdapter(new AutoCompleteAdapter(ItemDetailsActivity.this, databaseHelper.getUsernameList()));
 
 
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("item_price", pricevalue);
-                contentValues.put("item_quantity", quantityvalue);
-                contentValues.put("item_name", itemnamevalue);
+
+        }
+
+        public void FillItemDetail(){
+            Item item = databaseHelper.getIteminfo(item_id);
+            price.setText(item.item_price);
+            itemname.setText(item.item_name);
+            image.setImageBitmap(AddItem.getBitmap(item.item_img));
 
 
-                databaseHelper.insertToCart(contentValues);
 
 
-            }
-        });
+        }
 
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
 
-            }
-        });
-        checkout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ItemDetailsActivity.this, CartActivity.class);
-
-                startActivity(intent);
-            }
-        });
-        autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this, databaseHelper.getUsernameList()));
-    }
 }

@@ -62,6 +62,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\tFOREIGN KEY(`bill_id`) REFERENCES Bill\n" +
             ");";
 
+
+
+
     String createAddToCartTableSql = "CREATE TABLE if not exists `AddToCart` (\n" +
             "\t`item_id`\tINTEGER ,\n" +
             "\t`item_price`\tINTEGER,\n" +
@@ -69,7 +72,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t`cart_id`\tINTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "\t`item_quantity`\tINTEGER NOT NULL,\n" +
             "\t`item_image`\tBLOB\n" +
-
             ");";
 
 
@@ -100,13 +102,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         getWritableDatabase().insert("Bill", "", cv);
     }
 
-    public void insertBillParticulars(ContentValues cv) {
-        getWritableDatabase().insert("BillParticulars", "", cv);
+    public void insertBillParticulars(ContentValues cv){getWritableDatabase().insert("BillParticulars","",cv);}
+    public void insertToCart(ContentValues cv){
+        getWritableDatabase().insert("AddToCart","",cv);
     }
 
-    public void insertToCart(ContentValues cv) {
-        getWritableDatabase().insert("AddToCart", "", cv);
-    }
+
+
+
+
+
 
     public ArrayList<AddToCart> getCartList() {
         ArrayList<AddToCart> list = new ArrayList<AddToCart>();
@@ -127,6 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         c.close();
         return list;
+
 
     }
 
@@ -217,6 +223,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+    public Item getIteminfo(String item_id){
+        Item item=new Item();
+        String sql="SELECT * FROM `Item` WHERE item_id="+item_id;
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            item.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
+            item.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
+            item.item_price=Integer.parseInt(cursor.getString(Integer.parseInt("item_price")));
+            item.item_img= cursor.getBlob(cursor.getColumnIndex("item_img"));
+        }
+        cursor.close();
+        return item;
+
+    }
+
     public ArrayList<String> getUsernameList() {
         String sql = "select * from Customer";
 
@@ -240,4 +262,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+
+
+
 }

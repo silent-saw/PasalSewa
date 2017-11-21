@@ -72,7 +72,8 @@ public class CartActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        ListView.setAdapter(new AddToCartAdapter(this, databaseHelper.getCartList()));
+        ListView.setAdapter(new AddToCartAdapter(CartActivity.this, databaseHelper.getCartList()));
+
         super.onResume();
     }
 }
