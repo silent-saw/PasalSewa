@@ -43,7 +43,7 @@
                 android:id="@+id/priceset"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:text=""
+                android:text="0"
 
                 />
         </LinearLayout>

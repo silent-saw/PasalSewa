@@ -132,13 +132,5 @@ public class ItemDetailsActivity extends AppCompatActivity {
             price.setText(String.valueOf(item.item_price));
 
 
-
-
-
         }
-
-
-
-
-
 }
