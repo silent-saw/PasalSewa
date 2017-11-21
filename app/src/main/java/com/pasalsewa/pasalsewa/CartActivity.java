@@ -32,7 +32,7 @@ public class CartActivity extends AppCompatActivity {
         autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
         databaseHelper = new DatabaseHelper(this);
         buy = (Button) findViewById(R.id.buy);
-        cancel = (Button) findViewById(R.id.cancel);a
+        cancel = (Button) findViewById(R.id.cancel);
         paid = (EditText) findViewById(R.id.paid);
         total = (TextView) findViewById(R.id.total);
         credit = (TextView) findViewById(R.id.credit);
