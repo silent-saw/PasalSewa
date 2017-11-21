@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -30,6 +31,7 @@ public class ItemListActivity extends AppCompatActivity {
         if (id==R.id.action_cart){
             startActivity(new Intent(ItemListActivity.this,CartActivity.class));
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -51,11 +53,19 @@ public class ItemListActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
+
     }
     public void refresh() {
 
         gridView.setAdapter(new ItemAdapter(this,databaseHelper.getItemList()));
+
     }
+
 
     @Override
     protected void onResume() {
