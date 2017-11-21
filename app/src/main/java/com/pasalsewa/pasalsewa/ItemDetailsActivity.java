@@ -64,6 +64,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
              itemname = (TextView) findViewById(R.id.itemname);
 
             item_id =getIntent().getIntExtra("item_id",0);
+            FillItemDetail();
 
 
             addToCart.setOnClickListener(new View.OnClickListener() {
@@ -72,17 +73,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
                     Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
-                    FillItemDetail();
-                    int pricevalue = Integer.parseInt(price.getText().toString());
-                    int quantityvalue = Integer.parseInt(quantity.getText().toString());
+
+                    int pricevalue = Integer.valueOf(price.getText().toString());
+                    int quantityvalue = Integer.valueOf(quantity.getText().toString());
                     String itemnamevalue = itemname.getText().toString();
-                    image.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent,101);
-                        }
-                    });
+
 
 
 
@@ -92,7 +87,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
                     contentValues.put("item_id",item_id);
-                    contentValues.put("item_img",getBlob(bitmap));
+
 
 
 
@@ -132,37 +127,16 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         public void FillItemDetail(){
             Item item = databaseHelper.getIteminfo(item_id);
-            price.setText(item.item_price);
+
             itemname.setText(item.item_name);
-            image.setImageBitmap(AddItem.getBitmap(item.item_img));
+            price.setText(String.valueOf(item.item_price));
 
 
 
 
-        }
-    Bitmap bitmap;
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode ==101)
-        {
-
-            bitmap = (Bitmap) data.getExtras().get("data");
-            image.setImageBitmap(bitmap);
 
         }
-    }
-    public static byte[] getBlob(Bitmap bitmap) {
-        ByteArrayOutputStream bos =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
-        byte[] bArray =bos.toByteArray();
-        return bArray;
 
-
-    }
-    public static Bitmap getBitmap(byte[] byteArray) {
-        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-    }
 
 
 
