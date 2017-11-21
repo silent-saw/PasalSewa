@@ -67,23 +67,18 @@ public class ItemDetailsActivity extends AppCompatActivity {
             FillItemDetail(item_id);
 
 
+
             addToCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
                     Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
-
                     int pricevalue = Integer.parseInt(price.getText().toString());
                     int quantityvalue = Integer.parseInt(quantity.getText().toString());
+
                     String itemnamevalue = itemname.getText().toString();
-                    image.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent,101);
-                        }
-                    });
+
 
 
 
@@ -93,7 +88,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
                     contentValues.put("item_id",item_id);
-                    contentValues.put("item_img",getBlob(bitmap));
+
 
 
 
@@ -139,33 +134,5 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
 
 
-
         }
-    Bitmap bitmap;
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode ==101)
-        {
-
-            bitmap = (Bitmap) data.getExtras().get("data");
-            image.setImageBitmap(bitmap);
-
-        }
-    }
-    public static byte[] getBlob(Bitmap bitmap) {
-        ByteArrayOutputStream bos =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
-        byte[] bArray =bos.toByteArray();
-        return bArray;
-
-
-    }
-    public static Bitmap getBitmap(byte[] byteArray) {
-        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-    }
-
-
-
-
 }
