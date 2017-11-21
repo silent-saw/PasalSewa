@@ -66,7 +66,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
-                    Toast.makeText(ItemDetailsActivity.this, "Added to Cart", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
                     String pricevalue = price.getText().toString();
                     String quantityvalue = quantity.getText().toString();
                     String itemnamevalue = itemname.getText().toString();

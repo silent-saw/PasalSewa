@@ -15,10 +15,14 @@ import java.util.ArrayList;
  * Created by agubha on 11/19/2017.
  */
 
-public class AddToCartAdapter extends ArrayAdapter<Cart> {
+public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
     Context context;
 
-    public AddToCartAdapter(@NonNull Context context, int resource, ArrayList<Cart> list) {
+
+    public AddToCartAdapter(@NonNull Context context, ArrayList<AddToCart> list) {
+
+
+
         super(context, 0, list);
         this.context = context;
     }
@@ -26,7 +30,7 @@ public class AddToCartAdapter extends ArrayAdapter<Cart> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.cart_layout,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.cart_layout, null);
 
         TextView item_id_cart, item_name_cart, item_price_cart, item_quantity_cart;
         item_id_cart = view.findViewById(R.id.item_id_cart);
@@ -35,11 +39,11 @@ public class AddToCartAdapter extends ArrayAdapter<Cart> {
         item_quantity_cart = view.findViewById(R.id.item_qty_cart);
 
 
-        Cart addToCart = getItem(position);
-        item_id_cart.setText(addToCart.item_id);
-        item_name_cart.setText(addToCart.item_name);
-        item_price_cart.setText(addToCart.item_price);
-        item_quantity_cart.setText(addToCart.item_quantity);
+        AddToCart addToAddToCart = getItem(position);
+        item_id_cart.setText(addToAddToCart.item_id);
+        item_name_cart.setText(addToAddToCart.item_name);
+        item_price_cart.setText(addToAddToCart.item_price);
+        item_quantity_cart.setText(addToAddToCart.item_quantity);
         return view;
 
 
