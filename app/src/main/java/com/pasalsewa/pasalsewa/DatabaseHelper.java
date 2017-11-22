@@ -234,9 +234,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while(cursor.moveToNext()){
             item.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
             item.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
-            item.item_price=Integer.parseInt(cursor.getString(Integer.parseInt("item_price")));
+            item.item_price=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_price")));
             item.item_img= cursor.getBlob(cursor.getColumnIndex("item_img"));
-            item.item_qty =Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_quantity")));
+            item.item_qty =Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_qty")));
         }
         cursor.close();
         return item;
@@ -255,6 +255,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return list;
+    }
+
+    public ArrayList<AddToCart> getCartItems(){
+        String sql="SELECT * FROM  `AddToCart`";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        ArrayList<AddToCart> list=new ArrayList<AddToCart>();
+        while (cursor.moveToNext()){
+            AddToCart addToCart=new AddToCart();
+            addToCart.cart_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("cart_id")));
+            addToCart.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
+            addToCart.item_price=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_price")));
+            addToCart.item_quantity=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_quantity")));
+            addToCart.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
+            list.add(addToCart);
+        }
+        cursor.close();
+        return list;
+    }
+    //Delete all the items or rows from temptable ie.addtocart
+    public void clearCart(){
+        String sql="DELETE * FROM  `AddToCart`";
+        getWritableDatabase().execSQL(sql);
     }
 
     @Override

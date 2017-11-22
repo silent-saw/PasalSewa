@@ -64,18 +64,15 @@ public class ItemDetailsActivity extends AppCompatActivity {
              itemname = (TextView) findViewById(R.id.itemname);
 
             item_id =getIntent().getIntExtra("item_id",0);
-            FillItemDetail();
+            FillItemDetail(item_id);
+
 
 
             addToCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
-                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
-
-
-                    int pricevalue = Integer.valueOf(price.getText().toString());
-                    int quantityvalue = Integer.valueOf(quantity.getText().toString());
+                    int pricevalue = Integer.parseInt(price.getText().toString());
+                    int quantityvalue = Integer.parseInt(quantity.getText().toString());
                     String itemnamevalue = itemname.getText().toString();
 
                     ContentValues contentValues = new ContentValues();
@@ -85,6 +82,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_id",item_id);
 
                     databaseHelper.insertToCart(contentValues);
+
+
+                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
+                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
+
 
                 }
             });
@@ -115,11 +117,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         }
 
-        public void FillItemDetail(){
+        public void FillItemDetail(int item_id){
             Item item = databaseHelper.getIteminfo(item_id);
-
+            price.setText(item.item_price+"");
             itemname.setText(item.item_name);
-            price.setText(String.valueOf(item.item_price));
+            image.setImageBitmap(AddItem.getBitmap(item.item_img));
+
 
 
         }
