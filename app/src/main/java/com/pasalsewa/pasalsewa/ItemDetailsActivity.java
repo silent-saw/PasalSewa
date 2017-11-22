@@ -78,23 +78,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     int quantityvalue = Integer.valueOf(quantity.getText().toString());
                     String itemnamevalue = itemname.getText().toString();
 
-
-
-
-
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("item_price", pricevalue);
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
                     contentValues.put("item_id",item_id);
 
-
-
-
-
-
                     databaseHelper.insertToCart(contentValues);
-
 
                 }
             });
