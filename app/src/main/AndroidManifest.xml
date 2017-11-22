@@ -20,16 +20,18 @@
         <activity android:name=".CategoriesActivity" />
         <activity android:name=".TransactionActivity" />
         <activity android:name=".ItemListActivity" />
+        <activity android:name=".ItemDetailsActivity" />
         <activity android:name=".CustomerListActivity" />
         <activity android:name=".SortedItemListActivity" />
-        <activity android:name=".ItemDetailsActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".CustomerEntry" />
         <activity android:name=".CustomerInfoActivity" />
-        <activity android:name=".AddCategory"
-            android:theme="@style/AppTheme.popuptheme"/>
-        <activity android:name=".AddItem"
-            android:theme="@style/AppTheme.popuptheme"></activity>
+        <activity
+            android:name=".AddCategory"
+            android:theme="@style/AppTheme.popuptheme" />
+        <activity
+            android:name=".AddItem"
+            android:theme="@style/AppTheme.popuptheme" />
     </application>
 
 </manifest>

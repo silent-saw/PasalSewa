@@ -72,16 +72,23 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
                     Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
-                   // FillItemDetail();
-                    int pricevalue = Integer.parseInt(price.getText().toString());
+                    FillItemDetail();
+                   /* int pricevalue = Integer.parseInt(price.getText().toString());
                     int quantityvalue = Integer.parseInt(quantity.getText().toString());
+                    String itemnamevalue = itemname.getText().toString();*/
+
+                    int pricevalue = Integer.valueOf(price.getText().toString());
+                    int quantityvalue = Integer.valueOf(quantity.getText().toString());
                     String itemnamevalue = itemname.getText().toString();
+
 
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("item_price", pricevalue);
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
                     contentValues.put("item_img",getBlob(bitmap));
+                    contentValues.put("item_id",item_id);
+
                     databaseHelper.insertToCart(contentValues);
                     displaydata();
 
@@ -118,13 +125,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         }
 
-        /*public void FillItemDetail(){
+        public void FillItemDetail(){
             Item item = databaseHelper.getIteminfo(item_id);
             price.setText(item.item_price);
             itemname.setText(item.item_name);
             image.setImageBitmap(AddItem.getBitmap(item.item_img));
-               startActivity(intent);
-            }*/
+               //startActivity(intent);
+            }
         });
 
 
@@ -167,4 +174,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
     }
 
-}
+
+
+        }
+
+

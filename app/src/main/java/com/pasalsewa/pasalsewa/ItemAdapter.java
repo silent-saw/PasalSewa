@@ -42,6 +42,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 context.startActivity(new Intent(context,ItemDetailsActivity.class).putExtra("item_id",item.item_id));
             }
         });
