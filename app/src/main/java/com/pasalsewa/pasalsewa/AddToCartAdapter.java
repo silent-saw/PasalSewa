@@ -39,11 +39,11 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
         item_quantity_cart = view.findViewById(R.id.item_qty_cart);
 
 
-        AddToCart addToAddToCart = getItem(position);
-        item_id_cart.setText(addToAddToCart.item_id);
-        item_name_cart.setText(addToAddToCart.item_name);
-        item_price_cart.setText(addToAddToCart.item_price);
-        item_quantity_cart.setText(addToAddToCart.item_quantity);
+        final AddToCart AddToCart = getItem(position);
+        item_id_cart.setText(AddToCart.item_id);
+        item_name_cart.setText(AddToCart.item_name);
+        item_price_cart.setText(AddToCart.item_price);
+        item_quantity_cart.setText(AddToCart.item_quantity);
         return view;
 
 

@@ -120,7 +120,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ArrayList<AddToCart> list = new ArrayList<AddToCart>();
         String getCartListSql = "SELECT * FROM `AddToCart`";
         Cursor c = getReadableDatabase().rawQuery(getCartListSql, null);
-        Integer TotalCostPerItem,TotalCost=0;
 
         while (c.moveToNext()) {
             AddToCart AddToCart = new AddToCart();
@@ -129,9 +128,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             AddToCart.item_price = Integer.parseInt(c.getString(c.getColumnIndex("item_price")));
             AddToCart.item_quantity= Integer.parseInt(c.getString(c.getColumnIndex("item_quantity")));
             list.add(AddToCart);
-//            FOR CALCULATION
-            TotalCostPerItem=AddToCart.item_price * AddToCart.item_quantity;
-            TotalCost=TotalCost+TotalCostPerItem;
+//
         }
         c.close();
         return list;
