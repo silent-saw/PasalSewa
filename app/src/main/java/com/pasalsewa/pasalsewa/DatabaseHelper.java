@@ -273,6 +273,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return list;
     }
+    //Delete all the items or rows from temptable ie.addtocart
+    public void clearCart(){
+        String sql="DELETE * FROM  `AddToCart`";
+        getWritableDatabase().execSQL(sql);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
