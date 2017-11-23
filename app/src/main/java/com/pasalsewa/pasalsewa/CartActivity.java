@@ -22,7 +22,7 @@ public class CartActivity extends AppCompatActivity {
     Button buy, cancel;
     EditText paid;
     TextView total, credit;
-    ListView ListView;
+    ListView listView;
 
 
     @Override
@@ -36,7 +36,8 @@ public class CartActivity extends AppCompatActivity {
         paid = (EditText) findViewById(R.id.paid);
         total = (TextView) findViewById(R.id.total);
         credit = (TextView) findViewById(R.id.credit);
-        ListView = (android.widget.ListView) findViewById(R.id.display_add_to_cart);
+        listView = findViewById(R.id.display_add_to_cart);
+        listView.setAdapter(new AddToCartAdapter(CartActivity.this, databaseHelper.getCartList()));
         total.setText("Set Total Val");
 
 
@@ -72,7 +73,7 @@ public class CartActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        ListView.setAdapter(new AddToCartAdapter(CartActivity.this, databaseHelper.getCartList()));
+        listView.setAdapter(new AddToCartAdapter(CartActivity.this, databaseHelper.getCartList()));
 
         super.onResume();
     }

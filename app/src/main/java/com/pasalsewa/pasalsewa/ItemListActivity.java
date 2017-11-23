@@ -15,6 +15,7 @@ public class ItemListActivity extends AppCompatActivity {
     ImageView item_img;
     DatabaseHelper databaseHelper;
     GridView gridView;
+    int cat_id;
     int item_id;
 
 
@@ -40,6 +41,7 @@ public class ItemListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list);
+        cat_id = getIntent().getIntExtra("cat_id",0);
         item_img = (ImageView) findViewById(R.id.item_img);
         gridView = (GridView) findViewById(R.id.gridview);
         databaseHelper=new DatabaseHelper(this);
@@ -48,6 +50,7 @@ public class ItemListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ItemListActivity.this,AddItem.class);
+                intent.putExtra("cat_id",cat_id);
                 startActivity(intent);
             }
         });

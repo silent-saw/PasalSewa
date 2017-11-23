@@ -18,6 +18,8 @@ import java.io.ByteArrayOutputStream;
 
 public class AddItem extends AppCompatActivity {
     Button save;
+    String cat_name;
+    int cat_id;
     EditText item_name,category,item_price,item_qty;
     ImageView item_img;
     DatabaseHelper databaseHelper;
@@ -41,8 +43,11 @@ public class AddItem extends AppCompatActivity {
         item_price = (EditText) findViewById(R.id.item_price);
         item_qty = (EditText) findViewById(R.id.item_qty);
         category = (EditText) findViewById(R.id.category);
+        cat_id = getIntent().getIntExtra("cat_id",0);
         save= (Button) findViewById(R.id.save);
         databaseHelper = new DatabaseHelper(this);
+        cat_name= databaseHelper.getCategoryName(cat_id);
+        category.setText(cat_name);
         item_img = (ImageView) findViewById(R.id.item_img);
         item_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,14 +62,14 @@ public class AddItem extends AppCompatActivity {
                 String additemname= item_name.getText().toString();
                 int additemprice= Integer.parseInt(item_price.getText().toString());
                 int additemqty= Integer.parseInt(item_qty.getText().toString());
-                int adddcategory = Integer.parseInt(category.getText().toString());
+               // int adddcategory = Integer.parseInt(category.getText().toString());
 
 
                 ContentValues contentValues = new ContentValues();
                 contentValues.put("item_name",additemname);
                 contentValues.put("item_price",additemprice);
                 contentValues.put("item_qty",additemqty);
-                contentValues.put("cat_id",adddcategory);
+                contentValues.put("cat_id",cat_id);
                 contentValues.put("item_img",getBlob(bitmap));
                 databaseHelper.insertItem(contentValues);
                 Toast.makeText(AddItem.this, "Item added to list sucessfully",Toast.LENGTH_LONG).show();

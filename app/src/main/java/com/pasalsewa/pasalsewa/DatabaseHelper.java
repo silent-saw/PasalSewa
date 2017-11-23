@@ -117,7 +117,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public ArrayList<AddToCart> getCartList() {
-        ArrayList<AddToCart> list = new ArrayList<AddToCart>();
+        ArrayList<AddToCart> list = new ArrayList<>();
         String getCartListSql = "SELECT * FROM `AddToCart`";
         Cursor c = getReadableDatabase().rawQuery(getCartListSql, null);
         Integer TotalCostPerItem,TotalCost=0;
@@ -241,6 +241,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return item;
 
+    }
+
+    //Aezirus added a quick db code for retrieving category name for Item entry purpose.
+    public String getCategoryName(int cat_id){
+        String cat_name = null;
+        String sql = "select cat_name from Category where cat_id = "+ cat_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            cat_name=cursor.getString(cursor.getColumnIndex("cat_name"));
+        }
+        return cat_name;
     }
 
     public ArrayList<String> getUsernameList() {
