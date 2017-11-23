@@ -50,6 +50,7 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
 
         int subtotal_item = (addToAddToCart.item_quantity) * (addToAddToCart.item_price);
         item_total_price.setText(subtotal_item);
+
         return view;
 
 
