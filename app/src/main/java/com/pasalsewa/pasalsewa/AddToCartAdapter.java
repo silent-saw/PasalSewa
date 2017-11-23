@@ -43,13 +43,13 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
 
 
         AddToCart addToAddToCart = getItem(position);
-        item_qty.setText(addToAddToCart.item_quantity);
+        item_qty.setText(addToAddToCart.item_quantity+"");
         item_name.setText(addToAddToCart.item_name);
-        item_price.setText(addToAddToCart.item_price);
+        item_price.setText(addToAddToCart.item_price+"");
 
 
         int subtotal_item = (addToAddToCart.item_quantity) * (addToAddToCart.item_price);
-        item_total_price.setText(subtotal_item);
+        item_total_price.setText(subtotal_item+"");
 
         return view;
 
