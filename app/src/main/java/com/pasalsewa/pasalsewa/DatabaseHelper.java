@@ -223,6 +223,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public int getCustomerId(String customername){
+        int id=0;
+        String sql="SELECT * FROM `Customer` WHERE `customer_name`='"+customername+"'";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("customer_id")));
+
+        }
+        cursor.close();
+        return  id;
+    }
+
 
     public Item getIteminfo(int item_id){
         Item item=new Item();
@@ -298,6 +310,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
+    public int getBillId() {
+        int billid=0;
+        String sql="SELECT MAX(bill_id) FROM `Bill`";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while (cursor.moveToNext()){
+             billid= Integer.parseInt(cursor.getString(0));
+        }
+        return  billid;
+    }
 }
