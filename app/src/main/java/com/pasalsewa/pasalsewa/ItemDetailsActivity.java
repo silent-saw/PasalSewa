@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -80,12 +81,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
                     contentValues.put("item_id",item_id);
+                    Log.i("Message","Reached");
 
                     databaseHelper.insertToCart(contentValues);
 
 
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
-                    Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ItemDetailsActivity.this, " "+quantity.getText().toString(), Toast.LENGTH_SHORT).show();
 
 
                 }
