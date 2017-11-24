@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.sql.Blob;
 import java.util.ArrayList;
@@ -295,8 +296,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //Delete all the items or rows from temptable ie.addtocart
     public void clearCart(){
-        String sql="DELETE * FROM  `AddToCart`";
+        String sql="DELETE  FROM  `AddToCart`";
         getWritableDatabase().execSQL(sql);
+        Log.i("Cart cleared", "clearCart: ");
     }
 
     @Override

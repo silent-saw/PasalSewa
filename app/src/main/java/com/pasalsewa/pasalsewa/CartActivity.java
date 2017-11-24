@@ -83,6 +83,8 @@ public class CartActivity extends AppCompatActivity {
                     databaseHelper.insertBillParticulars(contentValues1);
                 }
 
+                databaseHelper.clearCart();
+
 
 
                 Toast.makeText(CartActivity.this, "Transaction Completed", Toast.LENGTH_SHORT).show();
