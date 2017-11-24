@@ -15,7 +15,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CartActivity extends AppCompatActivity {
+
 
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
@@ -36,9 +39,13 @@ public class CartActivity extends AppCompatActivity {
         paid = (EditText) findViewById(R.id.paid);
         total = (TextView) findViewById(R.id.total);
         credit = (TextView) findViewById(R.id.credit);
+        ArrayList<AddToCart>list =  databaseHelper.getCartList();
         listView = findViewById(R.id.display_add_to_cart);
-        listView.setAdapter(new AddToCartAdapter(CartActivity.this, databaseHelper.getCartList()));
-        total.setText("Set Total Val");
+        listView.setAdapter(new AddToCartAdapter(CartActivity.this, list));
+        AddToCart addToCart = new AddToCart();
+        final int totalAmount=addToCart.calculateTotal(list);
+
+        total.setText(" "+totalAmount);
 
 
         buy.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +69,7 @@ public class CartActivity extends AppCompatActivity {
 
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    credit.setText("Set credit Value");
+                    credit.setText(" "+(totalAmount-Integer.valueOf(paid.getText().toString())));
                     return true;
                 }
                 return false;

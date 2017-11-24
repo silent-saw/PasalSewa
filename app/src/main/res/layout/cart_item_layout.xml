@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:layout_marginTop="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,14 +43,15 @@
                 android:weightSum="10">
 
                 <TextView
+                    android:singleLine="true"
                     style="@style/TextStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="6"
                     android:background="@drawable/border_rectangle_stroke_white"
                     android:gravity="end"
                     android:text="Item Quantity"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -57,11 +59,11 @@
                     style="@style/TextStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="4"
                     android:background="@drawable/border_rectangle_stroke_white"
                     android:gravity="end"
                     android:text="Item "
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -75,11 +77,11 @@
                     style="@style/TextStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="6"
                     android:background="@drawable/border_rectangle_stroke_white"
                     android:gravity="end"
                     android:text="Item Price"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -87,11 +89,11 @@
                     style="@style/TextStyle"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="4"
                     android:background="@drawable/border_rectangle_stroke_white"
                     android:gravity="end"
                     android:text="Item "
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,7 +107,7 @@
                     style="@style/TextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="6"
                     android:background="@drawable/border_rectangle_stroke_white"
                     android:gravity="end"
                     android:text="Total Price"
@@ -117,7 +119,7 @@
                     style="@style/TextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="5"
+                    android:layout_weight="4"
                     android:background="@drawable/border_rectangle_stroke_white"
                     android:gravity="end"
                     android:text="Total Price"
