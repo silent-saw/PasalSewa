@@ -29,7 +29,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, @Nullable final View convertView, @NonNull ViewGroup parent) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_layout, null);
         TextView cat_name;
         ImageView cat_img;
@@ -47,5 +47,8 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
             }
         });
         return view;
+
+
+
     }
 }

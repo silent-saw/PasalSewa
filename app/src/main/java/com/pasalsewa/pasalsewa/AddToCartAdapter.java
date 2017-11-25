@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,7 +24,6 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
     public AddToCartAdapter(@NonNull Context context, ArrayList<AddToCart> list) {
 
 
-
         super(context, 0, list);
         this.context = context;
     }
@@ -30,22 +31,30 @@ public class AddToCartAdapter extends ArrayAdapter<AddToCart> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.cart_layout, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.cart_item_layout, null);
 
-        TextView item_id_cart, item_name_cart, item_price_cart, item_quantity_cart;
-        item_id_cart = view.findViewById(R.id.item_id_cart);
-        item_name_cart = view.findViewById(R.id.item_name_cart);
-        item_price_cart = view.findViewById(R.id.item_price_cart);
-        item_quantity_cart = view.findViewById(R.id.item_qty_cart);
+        ImageView item_img;
+        TextView item_name, item_qty, item_price, item_total_price;
+        item_img = view.findViewById(R.id.item_img);
+        item_name = view.findViewById(R.id.item_name);
+        item_qty = view.findViewById(R.id.item_qty);
+        item_price = view.findViewById(R.id.item_price);
+        item_total_price = view.findViewById(R.id.item_total_price);
 
 
         AddToCart addToAddToCart = getItem(position);
-        item_id_cart.setText(addToAddToCart.item_id);
-        item_name_cart.setText(addToAddToCart.item_name);
-        item_price_cart.setText(addToAddToCart.item_price);
-        item_quantity_cart.setText(addToAddToCart.item_quantity);
+        item_qty.setText(addToAddToCart.item_quantity+"");
+        item_name.setText(addToAddToCart.item_name);
+        item_price.setText(addToAddToCart.item_price+"");
+
+
+        int subtotal_item = (addToAddToCart.item_quantity) * (addToAddToCart.item_price);
+        item_total_price.setText(subtotal_item+"");
+
         return view;
 
 
     }
+
+
 }

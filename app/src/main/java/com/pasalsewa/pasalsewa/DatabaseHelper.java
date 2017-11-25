@@ -13,6 +13,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.sql.Blob;
 import java.util.ArrayList;
@@ -124,10 +125,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public ArrayList<AddToCart> getCartList() {
-        ArrayList<AddToCart> list = new ArrayList<AddToCart>();
+        ArrayList<AddToCart> list = new ArrayList<>();
         String getCartListSql = "SELECT * FROM `AddToCart`";
         Cursor c = getReadableDatabase().rawQuery(getCartListSql, null);
-        Integer TotalCostPerItem,TotalCost=0;
 
         while (c.moveToNext()) {
             AddToCart AddToCart = new AddToCart();
@@ -136,9 +136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             AddToCart.item_price = Integer.parseInt(c.getString(c.getColumnIndex("item_price")));
             AddToCart.item_quantity= Integer.parseInt(c.getString(c.getColumnIndex("item_quantity")));
             list.add(AddToCart);
-//            FOR CALCULATION
-            TotalCostPerItem=AddToCart.item_price * AddToCart.item_quantity;
-            TotalCost=TotalCost+TotalCostPerItem;
+//
         }
         c.close();
         return list;
@@ -233,6 +231,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public int getCustomerId(String customername){
+        int id=0;
+        String sql="SELECT * FROM `Customer` WHERE `customer_name`='"+customername+"'";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("customer_id")));
+
+        }
+        cursor.close();
+        return  id;
+    }
+
 
     public Item getIteminfo(int item_id){
         Item item=new Item();
@@ -241,13 +251,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         while(cursor.moveToNext()){
             item.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
             item.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
-            item.item_price=Integer.parseInt(cursor.getString(Integer.parseInt("item_price")));
+            item.item_price=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_price")));
             item.item_img= cursor.getBlob(cursor.getColumnIndex("item_img"));
-            item.item_qty =Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_quantity")));
+            item.item_qty =Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_qty")));
         }
         cursor.close();
         return item;
 
+    }
+
+    //Aezirus added a quick db code for retrieving category name for Item entry purpose.
+    public String getCategoryName(int cat_id){
+        String cat_name = null;
+        String sql = "select cat_name from Category where cat_id = "+ cat_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            cat_name=cursor.getString(cursor.getColumnIndex("cat_name"));
+        }
+        return cat_name;
     }
 
     public ArrayList<String> getUsernameList() {
@@ -264,6 +285,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return list;
     }
 
+    public ArrayList<AddToCart> getCartItems(){
+        String sql="SELECT * FROM  `AddToCart`";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        ArrayList<AddToCart> list=new ArrayList<AddToCart>();
+        while (cursor.moveToNext()){
+            AddToCart addToCart=new AddToCart();
+            addToCart.cart_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("cart_id")));
+            addToCart.item_id=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_id")));
+            addToCart.item_price=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_price")));
+            addToCart.item_quantity=Integer.parseInt(cursor.getString(cursor.getColumnIndex("item_quantity")));
+            addToCart.item_name=cursor.getString(cursor.getColumnIndex("item_name"));
+            list.add(addToCart);
+        }
+        cursor.close();
+        return list;
+    }
+    //Delete all the items or rows from temptable ie.addtocart
+    public void clearCart(){
+        String sql="DELETE  FROM  `AddToCart`";
+        getWritableDatabase().execSQL(sql);
+        Log.i("Cart cleared", "clearCart: ");
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
@@ -275,6 +319,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
+    public int getBillId() {
+        int billid=0;
+        String sql="SELECT MAX(bill_id) FROM `Bill`";
+        Cursor cursor=getReadableDatabase().rawQuery(sql,null);
+        while (cursor.moveToNext()){
+             billid= Integer.parseInt(cursor.getString(0));
+        }
+        return  billid;
+    }
 }

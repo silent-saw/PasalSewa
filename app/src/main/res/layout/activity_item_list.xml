@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_item_list"
     android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="fill_parent"
             android:gravity="center"
             android:stretchMode="columnWidth"
-            android:numColumns="2"
+            android:numColumns="3"
             android:scrollbars="horizontal">
         </GridView>
         <ImageView
@@ -30,10 +30,22 @@
             android:layout_weight="4"
             android:src="@drawable/ic_looks_one_black_24dp" />
     </LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:clickable="true"
+        android:src="@drawable/create"
+        android:layout_gravity="bottom|right"
+        android:baselineAlignBottom="true"
+
+        />
 
 
 
 
 
 
-</LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
