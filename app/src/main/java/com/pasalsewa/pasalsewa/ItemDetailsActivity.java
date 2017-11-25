@@ -59,11 +59,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
             checkout = (Button) findViewById(R.id.addtocredit);
             autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
             databaseHelper = new DatabaseHelper(this);
-             price = (TextView) findViewById(R.id.priceset);
-             quantity = (EditText) findViewById(R.id.quantity);
-              image = (ImageView) findViewById(R.id.image);
-             itemname = (TextView) findViewById(R.id.itemname);
-            item_id =getIntent().getIntExtra("item_id",0);
+            price = (TextView) findViewById(R.id.priceset);
+            quantity = (EditText) findViewById(R.id.quantity);
+            image = (ImageView) findViewById(R.id.image);
+            itemname = (TextView) findViewById(R.id.itemname);
+            item_id = getIntent().getIntExtra("item_id", 0);
+            FillItemDetail();
 
 
             addToCart.setOnClickListener(new View.OnClickListener() {
@@ -72,10 +73,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
                     Toast.makeText(ItemDetailsActivity.this, "Added to AddToCart", Toast.LENGTH_SHORT).show();
 
-                    FillItemDetail();
-                   /* int pricevalue = Integer.parseInt(price.getText().toString());
-                    int quantityvalue = Integer.parseInt(quantity.getText().toString());
-                    String itemnamevalue = itemname.getText().toString();*/
 
                     int pricevalue = Integer.valueOf(price.getText().toString());
                     int quantityvalue = Integer.valueOf(quantity.getText().toString());
@@ -86,20 +83,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
                     contentValues.put("item_price", pricevalue);
                     contentValues.put("item_quantity", quantityvalue);
                     contentValues.put("item_name", itemnamevalue);
-                    contentValues.put("item_img",getBlob(bitmap));
-                    contentValues.put("item_id",item_id);
-
+                    //contentValues.put("item_img",getBlob(bitmap));
+                    contentValues.put("item_id", item_id);
                     databaseHelper.insertToCart(contentValues);
-                    displaydata();
-
-                    image.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(intent,101);
-                        }
-                    });
-
+                    //displaydata();
+                }
+            });
 
 
             cancel.setOnClickListener(new View.OnClickListener() {
@@ -118,39 +107,34 @@ public class ItemDetailsActivity extends AppCompatActivity {
             });
 
 
-
             autoCompleteTextView.setAdapter(new AutoCompleteAdapter(ItemDetailsActivity.this, databaseHelper.getUsernameList()));
-
-
-
         }
 
-        public void FillItemDetail(){
-            Item item = databaseHelper.getIteminfo(item_id);
-            price.setText(item.item_price);
-            itemname.setText(item.item_name);
-            image.setImageBitmap(AddItem.getBitmap(item.item_img));
-               //startActivity(intent);
-            }
-        });
 
 
-      autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this,databaseHelper.getUsernameList()));
 
 
-        autoCompleteTextView.setAdapter(new AutoCompleteAdapter(this, databaseHelper.getUsernameList()));
-    }
-    public void displaydata(){
+
+
+
+
+  /*  public void displaydata(){
 
         Item item= databaseHelper.getIteminfo(item_id);
         itemname.setText(item.item_name);
         price.setText(item.item_price);
         ImageView image = (ImageView) findViewById(R.id.image);
-        image.setImageBitmap(ItemDetailsActivity.getBitmap(item.item_img));
+        image.setImageBitmap(ItemDetailsActivity.getBitmap(item.item_img));*/
 
+    public void FillItemDetail(){
+        Item item = databaseHelper.getIteminfo(item_id);
+        price.setText(item.item_price);
+        itemname.setText(item.item_name);
+        image.setImageBitmap(AddItem.getBitmap(item.item_img));
+        //startActivity(intent);
     }
 
-    Bitmap bitmap;
+  /*  Bitmap bitmap;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -172,7 +156,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
     public static Bitmap getBitmap(byte[] byteArray) {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-    }
+    }*/
 
 
 
