@@ -2,6 +2,7 @@ package com.pasalsewa.pasalsewa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +18,7 @@ public class ItemListActivity extends AppCompatActivity {
     GridView gridView;
     int cat_id;
     int item_id;
+    FloatingActionButton Fab;
 
 
     @Override
@@ -45,8 +47,9 @@ public class ItemListActivity extends AppCompatActivity {
         item_img = (ImageView) findViewById(R.id.item_img);
         gridView = (GridView) findViewById(R.id.gridview);
         databaseHelper=new DatabaseHelper(this);
+        Fab = (FloatingActionButton) findViewById(R.id.fab);
 
-        item_img.setOnClickListener(new View.OnClickListener() {
+        Fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ItemListActivity.this,AddItem.class);
