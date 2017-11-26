@@ -9,36 +9,56 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_add__category"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#afafca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context="com.example.agubha.pasal_sewa.Add_Category">
+        android:background="#E6E6E6"
 
+        tools:context="com.example.agubha.pasal_sewa.Add_Category">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Enter Category name"
+    android:textSize="20dp"
+    android:layout_marginTop="20dp"
+    style="@style/textview"
+    />
         <EditText
             android:id="@+id/cat_name"
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_height="70dp"
-            android:hint="Category Name" />
+            android:hint="Category Name"
+            style="@style/edittext"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="upload image"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            style="@style/textview"
+            />
 
         <ImageView
             android:id="@+id/cat_img"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_camera_black_24dp"/>
-
-        <ImageButton
-            android:id="@+id/Gallery"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+           android:layout_marginLeft="20dp"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#19A"
+            android:src="@drawable/camera"/>
 
         <Button
             android:id="@+id/save"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="submit" />
+            android:layout_gravity="center"
+            style ="@style/btnlayout"
+            android:text="submit"
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
 

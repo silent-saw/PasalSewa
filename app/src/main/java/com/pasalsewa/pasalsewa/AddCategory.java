@@ -66,13 +66,18 @@ public class AddCategory extends AppCompatActivity {
             public void onClick(View view) {
                 String addcategoryvalue= cat_name.getText().toString();
 
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("cat_name",addcategoryvalue);
-                contentValues.put("cat_img",getBlob(bitmap));
-                databaseHelper.insertCategory(contentValues);
-                Toast.makeText(AddCategory.this, "Category added to list sucessfully",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(AddCategory.this,CategoriesActivity.class);
-                startActivity(intent);
+                if (addcategoryvalue.length() > 0 && bitmap!=null ) {
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put("cat_name", addcategoryvalue);
+                    contentValues.put("cat_img", getBlob(bitmap));
+                    databaseHelper.insertCategory(contentValues);
+                    Toast.makeText(AddCategory.this, "Category added to list sucessfully", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddCategory.this, CategoriesActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Toast.makeText(AddCategory.this, "Empty Field", Toast.LENGTH_SHORT).show();
+                }
 
 
             }
