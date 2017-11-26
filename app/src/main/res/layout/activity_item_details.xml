@@ -43,7 +43,7 @@
                 android:id="@+id/priceset"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
-                android:text=""
+                android:text="0"
 
                 />
         </LinearLayout>
@@ -63,7 +63,8 @@
 
             <EditText
                 android:id="@+id/quantity"
-
+                android:text="1"
+                android:inputType="number"
                 android:layout_width="100dp"
                 android:layout_height="30dp" />
         </LinearLayout>
@@ -78,6 +79,7 @@
                 android:layout_height="40dp"
                 android:layout_weight="1"
                 android:hint="enter ur id"
+
                 ></AutoCompleteTextView>
             <Button
                 android:layout_width="match_parent"

@@ -7,42 +7,81 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/activity_add_item"
+        android:id="@+id/activity_add__category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#afafca"
+        android:background="#E6E6E6"
         android:orientation="vertical"
-        tools:context="com.example.agubha.pasal_sewa.Add_item">
+        tools:context="com.example.agubha.pasal_sewa.Add_Category">
 
-        <EditText
-            android:id="@+id/item_name"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Item name" />
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/item_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Item Name" />
 
-        <EditText
-            android:id="@+id/item_price"
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Item Price" />
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/item_qty"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Item Quantity"
+                android:inputType="number"
+                />
 
-        <EditText
-            android:id="@+id/item_qty"
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Item Quantity" />
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Item Price"
+                android:inputType="number"
+                />
+        </android.support.design.widget.TextInputLayout>
 
-        <ImageButton
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter category"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+        <ImageView
             android:id="@+id/item_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="20dp"
+            android:scaleType="fitXY"
+            android:layout_marginBottom="20dp"
+            android:background="#19A"
+            android:src="@drawable/camera"/>
 
         <Button
-            android:id="@+id/Submit"
-            android:layout_width="match_parent"
+            android:id="@+id/save"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="submit" />
+            android:layout_gravity="center"
+            style ="@style/btnlayout"
+            android:text="submit"
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
 

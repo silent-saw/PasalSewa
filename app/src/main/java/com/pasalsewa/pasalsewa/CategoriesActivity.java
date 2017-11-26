@@ -3,6 +3,7 @@ package com.pasalsewa.pasalsewa;
 import android.content.Intent;
 import android.os.Bundle;
 //import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,6 +17,7 @@ public class CategoriesActivity extends AppCompatActivity {
     ImageView cat_img;
     DatabaseHelper databaseHelper;
     GridView gridView;
+    FloatingActionButton FAB;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -41,8 +43,9 @@ public class CategoriesActivity extends AppCompatActivity {
         cat_img = (ImageView) findViewById(R.id.cat_img);
         gridView = (GridView) findViewById(R.id.gridview);
         databaseHelper = new DatabaseHelper(this);
+        FAB = (FloatingActionButton) findViewById(R.id.fab);
 
-        cat_img.setOnClickListener(new View.OnClickListener() {
+        FAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(CategoriesActivity.this,AddCategory.class);

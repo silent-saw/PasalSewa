@@ -13,6 +13,7 @@ public class CustomerInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_info);
+
         id=getIntent().getIntExtra("customer_id",0);
         databaseHelper=new DatabaseHelper(CustomerInfoActivity.this);
 
@@ -26,6 +27,5 @@ public class CustomerInfoActivity extends AppCompatActivity {
         name.setText(customer.customer_name);
         no.setText(customer.customer_no+"");
         address.setText(customer.customer_addr);
-
     }
 }
