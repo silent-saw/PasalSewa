@@ -9,15 +9,16 @@
         <LinearLayout
             android:layout_margin="10dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="210dp"
             android:layout_weight="4.3"
             android:background="@color/colorBackground"
             android:orientation="vertical"
+            android:id="@+id/extensor3"
             >
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:layout_height="40dp"
+
                 android:background="#95919d"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -28,23 +29,47 @@
                 android:id="@+id/cat_img"
                 android:layout_width="160dp"
                 android:layout_height="140dp"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
 
                 android:src="@drawable/ic_looks_one_black_24dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="20dp"
                 android:id="@+id/cat_name"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginBottom="10dp"
-                android:layout_weight="5"
+
                 android:textColor="#8e60fa"
                 android:textSize="20sp"
                 android:background="#9b9797"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/extensor"
+                android:layout_height="30dp"
+                android:background="#ffc82e"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/create"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/create"
+                    android:layout_weight="1"/>
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/create"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
         </LinearLayout>
+
 
 
 

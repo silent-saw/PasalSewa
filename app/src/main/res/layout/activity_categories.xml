@@ -21,14 +21,7 @@
             android:numColumns="2"
             android:scrollbars="horizontal">
               </GridView>
-        <ImageView
-            android:id="@+id/cat_img"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
 
-            android:layout_weight="4"
-            android:src="@drawable/ic_looks_one_black_24dp" />
 
     </LinearLayout>
     <android.support.design.widget.FloatingActionButton
