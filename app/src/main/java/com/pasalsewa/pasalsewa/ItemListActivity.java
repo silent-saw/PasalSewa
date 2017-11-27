@@ -16,6 +16,7 @@ public class ItemListActivity extends AppCompatActivity {
     ImageView item_img;
     DatabaseHelper databaseHelper;
     GridView gridView;
+    int id;
     int cat_id;
     int item_id;
     FloatingActionButton Fab;
@@ -46,8 +47,11 @@ public class ItemListActivity extends AppCompatActivity {
         cat_id = getIntent().getIntExtra("cat_id",0);
         item_img = (ImageView) findViewById(R.id.item_img);
         gridView = (GridView) findViewById(R.id.gridview);
+        id=getIntent().getIntExtra("cat_id",0);
+        databaseHelper=new DatabaseHelper(ItemListActivity.this);
         databaseHelper=new DatabaseHelper(this);
         Fab = (FloatingActionButton) findViewById(R.id.fab);
+
 
         Fab.setOnClickListener(new View.OnClickListener() {
             @Override

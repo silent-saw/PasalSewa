@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -23,11 +24,10 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class ItemDetailsActivity extends AppCompatActivity {
-
     AutoCompleteTextView autoCompleteTextView;
     DatabaseHelper databaseHelper;
     int item_id;
-    TextView price,itemname;
+    TextView price, itemname;
     ImageView image;
     EditText quantity;
 
@@ -47,85 +47,124 @@ public class ItemDetailsActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-        Button addToCart, cancel, checkout;
+
+    Button addToCart, cancel, checkout;
 
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_item_details);
-            addToCart = (Button) findViewById(R.id.addtocart);
-            cancel = (Button) findViewById(R.id.cancel);
-            checkout = (Button) findViewById(R.id.addtocredit);
-            autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
-            databaseHelper = new DatabaseHelper(this);
-             price = (TextView) findViewById(R.id.priceset);
-             quantity = (EditText) findViewById(R.id.quantity);
-              image = (ImageView) findViewById(R.id.image);
-             itemname = (TextView) findViewById(R.id.itemname);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_item_details);
 
-            item_id =getIntent().getIntExtra("item_id",0);
-            FillItemDetail(item_id);
+        addToCart = (Button) findViewById(R.id.addtocart);
+        cancel = (Button) findViewById(R.id.cancel);
+        checkout = (Button) findViewById(R.id.addtocredit);
+        autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.autocompletetextview);
+        databaseHelper = new DatabaseHelper(this);
+        price = (TextView) findViewById(R.id.priceset);
+        quantity = (EditText) findViewById(R.id.quantity);
+        image = (ImageView) findViewById(R.id.image);
+        itemname = (TextView) findViewById(R.id.itemname);
 
-
-
-            addToCart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int pricevalue = Integer.parseInt(price.getText().toString());
-                    int quantityvalue = Integer.parseInt(quantity.getText().toString());
-                    String itemnamevalue = itemname.getText().toString();
-
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put("item_price", pricevalue);
-                    contentValues.put("item_quantity", quantityvalue);
-                    contentValues.put("item_name", itemnamevalue);
-                    contentValues.put("item_id",item_id);
-                    Log.i("Message","Reached");
-
-                    databaseHelper.insertToCart(contentValues);
+        item_id = getIntent().getIntExtra("item_id", 0);
+        FillItemDetail(item_id);
 
 
-                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
-                    Toast.makeText(ItemDetailsActivity.this, " "+quantity.getText().toString(), Toast.LENGTH_SHORT).show();
+        addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int pricevalue = Integer.parseInt(price.getText().toString());
+                int quantityvalue = Integer.parseInt(quantity.getText().toString());
+                String itemnamevalue = itemname.getText().toString();
+
+                ContentValues contentValues = new ContentValues();
+                contentValues.put("item_price", pricevalue);
+                contentValues.put("item_quantity", quantityvalue);
+                contentValues.put("item_name", itemnamevalue);
+                //contentValues.put("item_img",getBlob(bitmap));
+                contentValues.put("item_id", item_id);
+                databaseHelper.insertToCart(contentValues);
+                //displaydata();
+                contentValues.put("item_id", item_id);
+                Log.i("Message", "Reached");
+
+                databaseHelper.insertToCart(contentValues);
 
 
-                }
-            });
+                startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
+                Toast.makeText(ItemDetailsActivity.this, " " + quantity.getText().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
-            cancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ItemDetailsActivity.this, CategoriesActivity.class));
 
-                }
-            });
-            checkout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(ItemDetailsActivity.this, CartActivity.class);
-
-
-                    startActivity(intent);
-                }
-            });
+            }
+        });
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ItemDetailsActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
-
-            autoCompleteTextView.setAdapter(new AutoCompleteAdapter(ItemDetailsActivity.this, databaseHelper.getUsernameList()));
-
-
-
-        }
-
-        public void FillItemDetail(int item_id){
-            Item item = databaseHelper.getIteminfo(item_id);
-            price.setText(item.item_price+"");
-            itemname.setText(item.item_name);
-            image.setImageBitmap(AddItem.getBitmap(item.item_img));
+        autoCompleteTextView.setAdapter(new AutoCompleteAdapter(ItemDetailsActivity.this, databaseHelper.getUsernameList()));
+    }
 
 
 
-        }
+
+
+
+
+
+
+  /*  public void displaydata(){
+
+        Item item= databaseHelper.getIteminfo(item_id);
+        itemname.setText(item.item_name);
+        price.setText(item.item_price);
+        ImageView image = (ImageView) findViewById(R.id.image);
+        image.setImageBitmap(ItemDetailsActivity.getBitmap(item.item_img));*/
+
+
+    /*  Bitmap bitmap;
+      @Override
+      protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+          super.onActivityResult(requestCode, resultCode, data);
+          if(requestCode ==101)
+          {
+
+              bitmap = (Bitmap) data.getExtras().get("data");
+              image.setImageBitmap(bitmap);
+
+          }
+      }
+      public static byte[] getBlob(Bitmap bitmap) {
+          ByteArrayOutputStream bos =new ByteArrayOutputStream();
+          bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+          byte[] bArray =bos.toByteArray();
+          return bArray;
+
+
+      }
+      public static Bitmap getBitmap(byte[] byteArray) {
+          return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+      }*/
+    public void FillItemDetail(int item_id) {
+        Item item = databaseHelper.getIteminfo(item_id);
+        price.setText(item.item_price + "");
+        itemname.setText(item.item_name);
+        image.setImageBitmap(AddItem.getBitmap(item.item_img));
+
+
+    }
 }
+
+
