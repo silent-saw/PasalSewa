@@ -57,28 +57,15 @@ public class CategoriesActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
     }
     public void refresh() {
         gridView.setAdapter(new CategoryAdapter(this,databaseHelper.getCategoryList()));
-
-
-
-
     }
-
-
-
 
     @Override
     protected void onResume() {
         super.onResume();
         refresh();
     }
-
 
 }

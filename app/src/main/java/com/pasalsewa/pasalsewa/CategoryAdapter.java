@@ -24,7 +24,6 @@ import java.util.ArrayList;
 
 public class CategoryAdapter extends ArrayAdapter<Category> {
     Context context;
-    LinearLayout gridview;
 
 
 
@@ -44,7 +43,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         ImageView cat_img;
         cat_name = (TextView) view.findViewById(R.id.cat_name);
         cat_img = (ImageView) view.findViewById(R.id.cat_img);
-         gridview = (LinearLayout) view.findViewById(R.id.extensor3);
+
 
 
 
