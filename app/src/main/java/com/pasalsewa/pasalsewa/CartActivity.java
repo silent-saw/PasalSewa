@@ -42,7 +42,7 @@ public class CartActivity extends AppCompatActivity {
         total = (TextView) findViewById(R.id.total);
         credit = (TextView) findViewById(R.id.credit);
         final ArrayList<AddToCart>list =  databaseHelper.getCartList();
-        listView = findViewById(R.id.display_add_to_cart);
+        listView = (ListView) findViewById(R.id.display_add_to_cart);
         listView.setAdapter(new AddToCartAdapter(CartActivity.this, list));
         AddToCart addToCart = new AddToCart();
         final int totalAmount=addToCart.calculateTotal(list);
