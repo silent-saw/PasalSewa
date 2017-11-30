@@ -19,18 +19,24 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             >
+<com.jcminarro.roundkornerlayout.RoundKornerLinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:corner_radius="20dp"
+    >
+    <ImageView
+        android:id="@+id/cat_img"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_add_shopping_cart_black_24dp"
+        />
 
-            <ImageView
-                android:id="@+id/cat_img"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:background="@drawable/border_rectangle_stroke_white"
-                android:scaleType="fitXY"
-                android:layout_gravity="center"
-
-                android:src="@drawable/ic_looks_one_black_24dp" />
 
 
+</com.jcminarro.roundkornerlayout.RoundKornerLinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
