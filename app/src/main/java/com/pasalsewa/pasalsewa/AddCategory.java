@@ -138,7 +138,7 @@ public class AddCategory extends AppCompatActivity {
 
     public static byte[] getBlob(Bitmap bitmap) {
         ByteArrayOutputStream bos =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        bitmap.compress(Bitmap.CompressFormat.PNG,0,bos);
         byte[] bArray =bos.toByteArray();
         return bArray;
 
