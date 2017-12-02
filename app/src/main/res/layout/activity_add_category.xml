@@ -48,8 +48,8 @@
             android:scaleType="fitXY"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
-            android:background="#19A"
-            android:src="@drawable/camera"/>
+            android:background="#2D9"
+            android:src="@drawable/ic_if_linkedin_ui_10_2335594"/>
 
         <Button
             android:id="@+id/save"
