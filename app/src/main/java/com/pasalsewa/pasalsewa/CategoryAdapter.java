@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -40,6 +41,7 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         cat_name.setText(category.cat_name);
         cat_img.setImageBitmap(AddCategory.getBitmap(category.cat_img));
 
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,8 +49,5 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
             }
         });
         return view;
-
-
-
     }
 }

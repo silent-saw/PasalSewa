@@ -63,5 +63,11 @@ public class CategoriesActivity extends AppCompatActivity {
         super.onResume();
         refresh();
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(CategoriesActivity.this,HomePageActivity.class);
+        startActivity(intent);
+    }
 
 }

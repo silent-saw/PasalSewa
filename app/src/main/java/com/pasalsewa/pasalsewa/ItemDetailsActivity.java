@@ -30,6 +30,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     TextView price, itemname;
     ImageView image;
     EditText quantity;
+    Button addToCart, cancel, checkout, newuser;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,9 +49,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    Button addToCart, cancel, checkout;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +63,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         quantity = (EditText) findViewById(R.id.quantity);
         image = (ImageView) findViewById(R.id.image);
         itemname = (TextView) findViewById(R.id.itemname);
-
+        newuser = (Button) findViewById(R.id.newuser);
         item_id = getIntent().getIntExtra("item_id", 0);
         FillItemDetail(item_id);
 
