@@ -1,7 +1,9 @@
 package com.pasalsewa.pasalsewa;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -48,6 +50,36 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
                 context.startActivity(new Intent(context, ItemListActivity.class).putExtra("cat_id", category.cat_id));
             }
         });
+        view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                createcustomdialouge();
+                return false;
+            }
+        });
         return view;
+    }
+
+
+    public void createcustomdialouge() { //Creation of custom dialouge
+        final Dialog dialog = new Dialog(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.selectsource, null);
+        view.findViewById(R.id.camera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+            }
+        });
+        view.findViewById(R.id.gallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setContentView(view);
+        dialog.setTitle("Choose to select");
+        dialog.show();
+
     }
 }
