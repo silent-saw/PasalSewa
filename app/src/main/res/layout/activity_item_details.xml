@@ -5,60 +5,79 @@
     android:padding="15dp"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff">
+    android:background="#c6c6c6">
 
 
 
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:id="@+id/image"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/fuugetsu"/>
+        android:layout_gravity="center"
+        android:src="@mipmap/if_1_2104664"
+        android:background="@drawable/borderimage"
+        />
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#fff"
+        android:layout_height="wrap_content"
+        style="@style/textview1"
+        android:background="#E6E6E6"
         android:text="item_name"
+        android:gravity="center"
         android:id="@+id/itemname"
+        android:layout_marginBottom="10dp"
         />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center">
         <LinearLayout
             android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:background="#E6E6E6"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:text="Price"
                 android:gravity="left"
                 android:textStyle="bold"
-                android:textSize="15dp"/>
+                style="@style/textview"
+                android:textSize="15dp"
+                android:layout_weight="1"/>
 
             <TextView
                 android:id="@+id/priceset"
                 android:layout_width="100dp"
+                style="@style/textview"
                 android:layout_height="30dp"
+                android:layout_weight="1"
                 android:text="0"
 
                 />
         </LinearLayout>
+
         <LinearLayout
+            android:background="#E6E6E6"
             android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:text="Quantity"
-                android:gravity="left"
-                android:textStyle="bold"
-                android:textSize="15dp"
+                android:layout_weight="1"
+                style="@style/textview"
                 />
 
             <EditText
@@ -70,68 +89,81 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="10dp">
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:paddingBottom="2dp">
             <AutoCompleteTextView
                 android:completionThreshold="1"
                 android:id="@+id/autocompletetextview"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="enter ur id"
+                android:hint="Enter Customer's name"
 
                 ></AutoCompleteTextView>
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="New user"/>
+                android:text="New user"
+                style="@style/btnlayout"
+                android:layout_margin="2dp"
+                android:id="@+id/newuser"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_margin="10dp"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
             android:orientation="horizontal">
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_margin="2dp"
-                android:background="#d6d7d7"
-
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/btnlayout"
+                >
             <Button
                 android:layout_weight="1"
                 android:id="@+id/addtocart"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="addtoart"
+                style="@style/btnlayout"
+                android:layout_margin="2dp"
+                android:layout_marginBottom="20dp"
                 />
                 <ImageView
-                    android:background="#d6d7d7"
-
-                    android:layout_width="20dp"
+                    android:layout_width="50dp"
                     android:layout_height="30dp"
+                    android:layout_gravity="center"
                     android:src="@drawable/ic_add_shopping_cart_black_24dp"/>
             </LinearLayout>
 
             <Button
                 android:layout_margin="2dp"
-                android:background="#d6d7d7"
+                style="@style/btnlayout"
                 android:id="@+id/addtocredit"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="checkout"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                />
         </LinearLayout>
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="cancel"
+            style="@style/btnlayout"
+            />
     </LinearLayout>
-<Button
-    android:id="@+id/cancel"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="cancel"/>
+
+    </ScrollView>
+
 
 
 

@@ -65,23 +65,31 @@ public class AddItem extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String additemname= item_name.getText().toString();
-                int additemprice= Integer.parseInt(item_price.getText().toString());
-                int additemqty= Integer.parseInt(item_qty.getText().toString());
-               // int adddcategory = Integer.parseInt(category.getText().toString());
+                if (item_price.getText().toString().length() > 0 && item_qty.getText().toString().length() > 0) {
+                    int additemprice = Integer.parseInt(item_price.getText().toString());
+                    int additemqty = Integer.parseInt(item_qty.getText().toString());
+                    //int adddcategory = Integer.parseInt(category.getText().toString());
 
+                    if (additemname.length() > 0 && additemprice > 0 && additemqty > 0 && bitmap != null) {
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("item_name", additemname);
+                        contentValues.put("item_price", additemprice);
+                        contentValues.put("item_qty", additemqty);
+                        contentValues.put("cat_id", cat_id);
+                        contentValues.put("item_img", getBlob(bitmap));
+                        databaseHelper.insertItem(contentValues);
+                        Toast.makeText(AddItem.this, "Item added to list sucessfully", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(AddItem.this, ItemListActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(AddItem.this, "Empty Fields", Toast.LENGTH_LONG).show();
+                    }
 
-                ContentValues contentValues = new ContentValues();
-                contentValues.put("item_name",additemname);
-                contentValues.put("item_price",additemprice);
-                contentValues.put("item_qty",additemqty);
-                contentValues.put("cat_id",cat_id);
-                contentValues.put("item_img",getBlob(bitmap));
-                databaseHelper.insertItem(contentValues);
-                Toast.makeText(AddItem.this, "Item added to list sucessfully",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(AddItem.this,ItemListActivity.class);
-                startActivity(intent);
-
-
+                }
+                else
+                {
+                    Toast.makeText(AddItem.this, "Empty Fields", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -126,6 +134,7 @@ public class AddItem extends AppCompatActivity {
                 bitmap = MediaStore.Images.Media.getBitmap(
                         getContentResolver(), imageUri);
                 item_img.setImageBitmap(bitmap);
+                bitmap = getResizedBitmap(bitmap, 400);
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -139,7 +148,7 @@ public class AddItem extends AppCompatActivity {
 
     public static byte[] getBlob(Bitmap bitmap) {
         ByteArrayOutputStream bos =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        bitmap.compress(Bitmap.CompressFormat.PNG,0,bos);
         byte[] bArray =bos.toByteArray();
         return bArray;
 
@@ -147,5 +156,20 @@ public class AddItem extends AppCompatActivity {
     }
     public static Bitmap getBitmap(byte[] byteArray) {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+    }
+    //code for the compression of image from gallery of large size
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
     }
 }

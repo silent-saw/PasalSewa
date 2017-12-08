@@ -58,7 +58,7 @@ public class AddCategory extends AppCompatActivity {
         cat_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              createcustomdialouge();
+                createcustomdialouge();
             }
         });
         save.setOnClickListener(new View.OnClickListener() {
@@ -84,47 +84,47 @@ public class AddCategory extends AppCompatActivity {
         });
     }
 
-  public void createcustomdialouge(){ //Creation of custom dialouge
-      final Dialog dialog = new Dialog(this);
-      View view = LayoutInflater.from(this).inflate(R.layout.selectsource,null);
-      view.findViewById(R.id.camera).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-              startActivityForResult(intent,101);
-              dialog.dismiss();
+    public void createcustomdialouge(){ //Creation of custom dialouge
+        final Dialog dialog = new Dialog(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.selectsource,null);
+        view.findViewById(R.id.camera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,101);
+                dialog.dismiss();
 
-          }
-      });
-      view.findViewById(R.id.gallery).setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-              startActivityForResult(intent,102);
-              dialog.dismiss();
-          }
-      });
-      dialog.setContentView(view);
-      dialog.setTitle("Choose to select");
-      dialog.show();
+            }
+        });
+        view.findViewById(R.id.gallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent,102);
+                dialog.dismiss();
+            }
+        });
+        dialog.setContentView(view);
+        dialog.setTitle("Choose to select");
+        dialog.show();
 
-  }
+    }
 
     Bitmap bitmap;// Intialization for uploading images
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 101 && resultCode== Activity.RESULT_OK) {
+        if (requestCode == 101 && resultCode== Activity.RESULT_OK && data != null && data.getData() != null) {
             bitmap = (Bitmap) data.getExtras().get("data");
             cat_img.setImageBitmap(bitmap);
         }
-        else if(requestCode==102 && resultCode == Activity.RESULT_OK) {
+        else if(requestCode==102 && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(
-                        getContentResolver(), imageUri);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                 cat_img.setImageBitmap(bitmap);
+                bitmap = getResizedBitmap(bitmap, 400);
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -138,7 +138,7 @@ public class AddCategory extends AppCompatActivity {
 
     public static byte[] getBlob(Bitmap bitmap) {
         ByteArrayOutputStream bos =new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,bos);
+        bitmap.compress(Bitmap.CompressFormat.PNG,0,bos);
         byte[] bArray =bos.toByteArray();
         return bArray;
 
@@ -147,5 +147,20 @@ public class AddCategory extends AppCompatActivity {
     public static Bitmap getBitmap(byte[] byteArray) {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
     }
+    public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+        int width = image.getWidth();
+        int height = image.getHeight();
+
+        float bitmapRatio = (float)width / (float) height;
+        if (bitmapRatio > 1) {
+            width = maxSize;
+            height = (int) (width / bitmapRatio);
+        } else {
+            height = maxSize;
+            width = (int) (height * bitmapRatio);
+        }
+        return Bitmap.createScaledBitmap(image, width, height, true);
+    }
+
 
 }

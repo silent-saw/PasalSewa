@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/borderimage"
     >
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -12,14 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#E6E6E6"
-
         tools:context="com.example.agubha.pasal_sewa.Add_Category">
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Enter Category name"
-    android:textSize="20dp"
     android:layout_marginTop="20dp"
     style="@style/textview"
     />
@@ -34,8 +33,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="upload image"
-            android:textSize="20dp"
+            android:text="Upload Image"
             android:layout_marginTop="20dp"
             style="@style/textview"
             />
@@ -48,8 +46,8 @@
             android:scaleType="fitXY"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
-            android:background="#19A"
-            android:src="@drawable/camera"/>
+            android:background="#2D9"
+            android:src="@drawable/ic_if_linkedin_ui_10_2335594"/>
 
         <Button
             android:id="@+id/save"

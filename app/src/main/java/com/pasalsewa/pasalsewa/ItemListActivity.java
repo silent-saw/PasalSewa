@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class ItemListActivity extends AppCompatActivity {
     ImageView item_img;
@@ -52,27 +53,39 @@ public class ItemListActivity extends AppCompatActivity {
         databaseHelper=new DatabaseHelper(this);
         Fab = (FloatingActionButton) findViewById(R.id.fab);
 
+//Items can be only added through specific category cannot be added from itemlist directly
+if(cat_id!=0) {
+    Fab.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(ItemListActivity.this, AddItem.class);
+            intent.putExtra("cat_id", cat_id);
+            startActivity(intent);
+        }
+    });
+}
+//to notify that item cannot be added from item list
+        else {
+            Fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(ItemListActivity.this,"Items cannot be added from item list",Toast.LENGTH_LONG).show();
+                }
+            });
 
-        Fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ItemListActivity.this,AddItem.class);
-                intent.putExtra("cat_id",cat_id);
-                startActivity(intent);
-            }
-        });
 
-
-
-
-
-
+        }
 
     }
     public void refresh() {
-
+        //to select from specific category function getCategoryItem(cat_id) from database is called
+    if (cat_id!=0) {
+        gridView.setAdapter(new ItemAdapter(this, databaseHelper.getCategoryItem(cat_id)));
+    }
+    //to select all item list function getItemList() from database is called
+    else{
         gridView.setAdapter(new ItemAdapter(this,databaseHelper.getItemList()));
-
+    }
     }
 
 
@@ -80,6 +93,18 @@ public class ItemListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         refresh();
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(cat_id!=0) {
+            Intent intent = new Intent(ItemListActivity.this, CategoriesActivity.class);
+            startActivity(intent);
+        }
+        else {
+            Intent intent = new Intent(ItemListActivity.this, HomePageActivity.class);
+            startActivity(intent);
+        }
     }
 
 }

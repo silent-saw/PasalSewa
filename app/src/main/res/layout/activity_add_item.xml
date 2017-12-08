@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/borderimage">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/activity_add__category"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E6E6E6"
         android:orientation="vertical"
         tools:context="com.example.agubha.pasal_sewa.Add_Category">
 
@@ -34,6 +34,7 @@
                 android:layout_height="50dp"
                 android:hint="Item Quantity"
                 android:inputType="number"
+                android:text="1"
                 />
 
         </android.support.design.widget.TextInputLayout>
@@ -47,7 +48,7 @@
                 android:layout_height="50dp"
                 android:hint="Item Price"
                 android:inputType="number"
-                />
+                                />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
