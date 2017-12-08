@@ -9,35 +9,40 @@
         <LinearLayout
             android:layout_margin="10dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="210dp"
             android:layout_weight="4.3"
             android:background="@drawable/border_rectangle_stroke_white"
-            android:orientation="vertical"
-
-            >
-
-
-
+            android:orientation="vertical">
             <ImageView
                 android:id="@+id/cat_img"
                 android:layout_width="160dp"
                 android:layout_height="140dp"
-                android:scaleType="fitCenter"
+                android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal"
 
                 android:src="@drawable/ic_looks_one_black_24dp" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+     android:layout_height="40dp"
+
                 android:id="@+id/cat_name"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginBottom="10dp"
+
+
+                android:textColor="#8e60fa"
+                android:textSize="20sp"
+                android:background="#9b9797"/>
+
+
                 android:textColor="#fefdff"
                 android:textSize="20sp"
                 android:background="#5b5a5a"/>
+
         </LinearLayout>
+
 
 
 
