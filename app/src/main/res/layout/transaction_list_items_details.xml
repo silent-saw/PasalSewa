@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
             android:layout_weight="2"
-            android:background="@color/colorBackground"
+
             android:gravity="center"
             android:text="1"
             android:textSize="30sp"
@@ -36,7 +36,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
             android:layout_weight="5"
-            android:background="@color/colorBackground"
+
             android:gravity="center"
             android:text="Sachin Maharjan"
             android:textSize="30sp" />
@@ -46,10 +46,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:background="@color/colorBackground"
+
             android:src="@drawable/person" />
     </LinearLayout>
 
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/bp_recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" />
     <LinearLayout
         android:weightSum="12"
         android:layout_marginBottom="20dp"
@@ -64,11 +70,12 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/bill_amount_title"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+
                 android:text="Amount Total"
                 android:textSize="20sp"
                 style="@style/TextStyle"
@@ -76,11 +83,12 @@
                 android:layout_marginRight="5dp"
                 />
             <TextView
+                android:id="@+id/bill_paid_title"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+
                 android:text="Amount Paid"
                 android:textSize="20sp"
                 style="@style/TextStyle"
@@ -88,11 +96,12 @@
                 android:layout_marginRight="5dp"
                 />
             <TextView
+                android:id="@+id/bill_due_title"
                 android:gravity="center"
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+
                 android:text="Amount Due"
                 android:textSize="20sp"
                 style="@style/TextStyle"
@@ -110,7 +119,7 @@
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+
                 android:text="Amount Total"
                 android:textSize="18sp"
                 style="@style/TextStyle"
@@ -122,7 +131,7 @@
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+
                 android:text="Amount Paid"
                 android:textSize="18sp"
                 style="@style/TextStyle"
@@ -134,7 +143,7 @@
                 android:layout_weight="4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+
                 android:text="Amount Due"
                 android:textSize="18sp"
                 style="@style/TextStyle"
@@ -150,12 +159,13 @@
         android:weightSum="10">
 
         <TextView
+            android:id="@+id/status_title"
             style="@style/TextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
             android:layout_weight="5"
-            android:background="@color/colorBackground"
+
             android:gravity="center"
             android:text="Status"
             android:textSize="30sp"
@@ -171,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="5"
-            android:background="@color/colorBackground"
+
             android:gravity="center"
             android:text="Credit"
             android:textSize="25sp" />

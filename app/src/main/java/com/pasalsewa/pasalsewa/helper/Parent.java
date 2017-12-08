@@ -1,7 +1,9 @@
 package com.pasalsewa.pasalsewa.helper;
 
+import com.pasalsewa.pasalsewa.*;
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +11,7 @@ import java.util.List;
  */
 
 public class Parent extends ExpandableGroup {
-    public Parent(String title, List<Bill> items) {
+    public Parent(String title, ArrayList<Bill> items) {
         super(title, items);
     }
 

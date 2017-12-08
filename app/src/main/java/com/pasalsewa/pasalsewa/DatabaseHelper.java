@@ -271,6 +271,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cat_name;
     }
 
+    public String getItemName(int item_id){
+        String item_name = null;
+        String sql = "select item_name from Item where item_id = "+ item_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            item_name=cursor.getString(cursor.getColumnIndex("item_name"));
+        }
+        return item_name;
+    }
+
+    public String getCustomerName(int customer_id){
+        String customer_name = null;
+        String sql = "select customer_name from Customer where customer_id = "+ customer_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            customer_name=cursor.getString(cursor.getColumnIndex("customer_name"));
+        }
+        return customer_name;
+    }
+
     public ArrayList<String> getUsernameList() {
         String sql = "select * from Customer";
 
@@ -300,6 +320,75 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return list;
+    }
+
+
+    public ArrayList<Bill> getBillInfo(){
+        String sql= "Select * from Bill";
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        ArrayList<Bill>list = new ArrayList<>();
+        while(cursor.moveToNext()){
+            Bill bill = new Bill(0,0,0,0,0);
+            bill.bill_id=cursor.getInt(cursor.getColumnIndex("bill_id"));
+            bill.customer_id=cursor.getInt(cursor.getColumnIndex("customer_id"));
+            bill.bill_amt=cursor.getInt(cursor.getColumnIndex("bill_amt"));
+            bill.bill_paid=cursor.getInt(cursor.getColumnIndex("bill_paid"));
+            bill.bill_rem=cursor.getInt(cursor.getColumnIndex("bill_rem"));
+            //bill.bill_time=cursor.getString(cursor.getColumnIndex("bill_time"));
+            list.add(bill);
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<Bill>getBillInfoByCustomerId(int customer_id){
+        String sql= "Select * from Bill where customer_id="+customer_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        ArrayList<Bill>list = new ArrayList<>();
+        while(cursor.moveToNext()){
+            Bill bill = new Bill(0,0,0,0,0);
+            bill.bill_id=cursor.getInt(cursor.getColumnIndex("bill_id"));
+            bill.customer_id=cursor.getInt(cursor.getColumnIndex("customer_id"));
+            bill.bill_amt=cursor.getInt(cursor.getColumnIndex("bill_amt"));
+            bill.bill_paid=cursor.getInt(cursor.getColumnIndex("bill_paid"));
+            bill.bill_rem=cursor.getInt(cursor.getColumnIndex("bill_rem"));
+           // bill.bill_time=cursor.getString(cursor.getColumnIndex("bill_time"));
+            list.add(bill);
+        }
+        cursor.close();
+        return list;
+    }
+
+    public ArrayList<BillParticulars>getBillParticulars(int bill_id){
+        String sql= "Select * from BillParticulars where bill_id ="+bill_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        ArrayList<BillParticulars>list = new ArrayList<>();
+        while(cursor.moveToNext()){
+            BillParticulars billParticulars = new BillParticulars(0,0,0,0,0);
+
+            billParticulars.bp_id=cursor.getInt(cursor.getColumnIndex("bp_id"));
+            billParticulars.item_id=cursor.getInt(cursor.getColumnIndex("item_id"));
+            billParticulars.item_price=cursor.getInt(cursor.getColumnIndex("item_price"));
+            billParticulars.item_qty=cursor.getInt(cursor.getColumnIndex("item_qty"));
+            list.add(billParticulars);
+        }
+        cursor.close();
+        return list;
+    }
+
+    public BillParticulars getBillParticularsBybpId(int bp_id){
+        BillParticulars billParticulars = new BillParticulars(0,0,0,0,0);
+        String sql = "Select * from BillParticulars where bp_id ="+bp_id;
+        Cursor cursor = getReadableDatabase().rawQuery(sql,null);
+        while(cursor.moveToNext()){
+            billParticulars.bill_id=cursor.getInt(cursor.getColumnIndex("bill_id"));
+            billParticulars.item_qty=cursor.getInt(cursor.getColumnIndex("item_qty"));
+            billParticulars.item_id=cursor.getInt(cursor.getColumnIndex("item_id"));
+            billParticulars.item_price=cursor.getInt(cursor.getColumnIndex("item_price"));
+
+    }
+    cursor.close();
+    return billParticulars;
     }
     //Delete all the items or rows from temptable ie.addtocart
     public void clearCart(){
