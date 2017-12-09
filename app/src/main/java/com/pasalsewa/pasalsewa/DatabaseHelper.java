@@ -390,12 +390,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     cursor.close();
     return billParticulars;
     }
-    //Delete all the items or rows from temptable ie.addtocart
-    public void clearCart(){
-        String sql="DELETE  FROM  `AddToCart`";
-        getWritableDatabase().execSQL(sql);
-        Log.i("Cart cleared", "clearCart: ");
-    }
+
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
@@ -417,4 +412,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return  billid;
     }
+
+    /******************DELETE QUERIES*****************************************/
+
+    public void deleteMember(int id){
+        getWritableDatabase().delete("Customer","customer_id="+id,null);
+    }
+
+    public void deleteCategory(int id){
+        getWritableDatabase().delete("Category","cat_id="+id,null);
+    }
+
+    public void deleteItem(int id){
+        getWritableDatabase().delete("Item","item_id="+id,null);
+    }
+
+    public void deleteBill(int id){
+        getWritableDatabase().delete("Bill","bill_id="+id,null);
+    }
+
+    public void deleteBillParticulars(int id){
+        getWritableDatabase().delete("BillParticulars","bp_id="+id,null);
+    }
+
+    //Delete all the items or rows from temptable ie.addtocart
+    public void clearCart(){
+        String sql="DELETE  FROM  `AddToCart`";
+        getWritableDatabase().execSQL(sql);
+        Log.i("Cart cleared", "clearCart: ");
+    }
+
+    /*******************************UPDATE QUERIES***********************************/
+
+    public void updateMember(int id, ContentValues cv){
+        getWritableDatabase().update("Customer",cv,"customer_id="+id,null);
+    }
+    public void updateCategory(int id, ContentValues cv){
+        getWritableDatabase().update("Category",cv,"cat_id="+id,null);
+    }
+    public void updateItem(int id, ContentValues cv){
+        getWritableDatabase().update("Item",cv,"item_id="+id,null);
+    }
+    public void updateBill(int id, ContentValues cv){
+        getWritableDatabase().update("Bill",cv,"bill_id="+id,null);
+    }
+    public void updateBillParticulars(int id, ContentValues cv){
+        getWritableDatabase().update("BillParticulars",cv,"bp_id="+id,null);
+    }
+
+
+
 }
